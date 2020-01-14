@@ -5,8 +5,10 @@ import svelte from 'rollup-plugin-svelte'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup'
+// import { postcss, globalStyle } from 'svelte-preprocess'
+import sveltePreprocess from 'svelte-preprocess'
+import iPack from 'svelte-i-pack'
 import pkg from './package.json'
-import autoPreprocess from 'svelte-preprocess'
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
@@ -19,11 +21,7 @@ const onwarn = (warning, onwarn) =>
 const dedupe = importee =>
   importee === 'svelte' || importee.startsWith('svelte/')
 
-const preprocess = autoPreprocess({
-  postcss: {
-    plugins: [require('postcss-import')(), require('autoprefixer')()],
-  },
-})
+const preprocess = [iPack(), sveltePreprocess({ postcss: true })]
 
 export default {
   client: {
@@ -35,8 +33,8 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
-        preprocess,
         dev,
+        preprocess,
         hydratable: true,
         emitCss: true,
       }),
@@ -87,9 +85,10 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
-        preprocess,
         generate: 'ssr',
         dev,
+        preprocess,
+        emitCss: true,
       }),
       resolve({
         dedupe,
@@ -98,7 +97,6 @@ export default {
     ],
     external: Object.keys(pkg.dependencies).concat(
       require('module').builtinModules ||
-        // eslint-disable-next-line node/no-deprecated-api
         Object.keys(process.binding('natives')),
     ),
     onwarn,

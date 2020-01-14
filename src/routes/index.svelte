@@ -1,42 +1,24 @@
 <script>
-  import Navbar from '../components/Navbar.svelte'
-  import Hero from '../components/Hero.svelte'
-  import Intro from '../components/Intro.svelte'
-  import Features from '../components/Features.svelte'
-  import Comparison from '../components/Comparison.svelte'
-  import Flow from '../components/Flow.svelte'
-  import Price from '../components/Price.svelte'
-  import QA from '../components/QA.svelte'
-  import Contact from '../components/Contact.svelte'
-  import Bottoms from '../components/Bottoms.svelte'
+  import Tailwindcss from '../Tailwindcss.svelte'
+  import Navbar from '../components/layouts/Navbar.svelte'
+  import Hero from '../components/layouts/Hero.svelte'
+  import Intro from '../components/layouts/Intro.svelte'
+  import Features from '../components/layouts/Features.svelte'
+  import Comparison from '../components/layouts/Comparison.svelte'
+  import Flow from '../components/layouts/Flow.svelte'
+  import Price from '../components/layouts/Price.svelte'
+  import QA from '../components/layouts/QA.svelte'
+  import Contact from '../components/layouts/Contact.svelte'
+  import Bottoms from '../components/layouts/Bottoms.svelte'
 </script>
 
-<style global>
-  @import '../normalize.css';
-
-  :root {
-    /* colors */
-    --wine: #842612;
-    --ocher: #d4ca6e;
-    --cream: #f5f4ee;
-    /* fonts */
-    --noto: 'Noto Sans', Roboto, sans-serif;
-    --gothic: '游ゴシック体', 'Yu Gothic', YuGothic, Roboto, sans-serif;
-    --times: 'Times New Roman', Times, serif;
-  }
-  body {
-    max-width: 1440px;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #fcfcfc;
-  }
-</style>
+<!-- <Tailwindcss></Tailwindcss> -->
 
 <Navbar></Navbar>
 
-<Hero></Hero>
-<Intro></Intro>
 <main>
+  <Hero></Hero>
+  <Intro></Intro>
   <Features></Features>
   <Comparison></Comparison>
   <Flow></Flow>
@@ -45,3 +27,28 @@
   <Contact></Contact>
 </main>
 <Bottoms></Bottoms>
+<style global>
+  :root {
+    /* colors */
+    --wine: #842612;
+    --ocher: #d4ca6e;
+    --cream: #f5f4ee;
+    --shadow: rgba(0, 0, 0, 0.2);
+    --d-shadow: rgba(0, 0, 0, 0.3);
+    /* fonts */
+    --noto: 'Noto Sans', Roboto, sans-serif;
+    --gothic: YuGothic, '游ゴシック体', 'Yu Gothic', Roboto, sans-serif;
+    --times: 'Times New Roman', Times, serif;
+  }
+  html {
+    font-family: var(--gothic);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    min-height: 100vh;
+  }
+  #sapper {
+    overflow: hidden;
+  }
+</style>
