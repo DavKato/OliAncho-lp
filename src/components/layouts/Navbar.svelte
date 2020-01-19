@@ -1,5 +1,7 @@
 <script>
   import Image from 'svelte-i-pack'
+  import Hamburger from '../materials/Hamburger.svelte'
+
   const list = [
     {
       id: 'features',
@@ -22,18 +24,77 @@
       name: 'よくある質問',
     },
   ]
+
+  let expanded = false
 </script>
 
+<svelte:body on:click="{() => expanded = false}"></svelte:body>
 
-<nav>
-  <a href="#hero"> <h1>OliAncho</h1></a>
-  <ul>
-    {#each list as item}
-    <li>
-      <a href="#{item.id}" class="nav-link">{item.name}</a>
-    </li>
-    {/each}
-  </ul>
+<nav class:noshadow="{expanded}" on:click|stopPropagation>
+  <div class="wrap">
+    <a href="#hero"> <h1>OliAncho</h1></a>
+    <div class="sp-menu">
+      <a href="#contact"
+        ><Image
+          src="sp/3x/mail.png"
+          width="60*3"
+          alt="Contact us"
+          class="nav-sp-mail"
+        ></Image
+      ></a>
+      <Hamburger {expanded} on:click="{() => expanded = !expanded}"></Hamburger>
+    </div>
+  </div>
+  <div class="sp-list" class:expanded>
+    <ul class="ul-main">
+      {#each list as item}
+      <li class="li-main">
+        <a href="#{item.id}" class="nav-link">{item.name}</a>
+      </li>
+      {/each}
+    </ul>
+    <ul class="ul-sp">
+      <li class="li-sp">
+        <a
+          href="https://www.instagram.com/oliancho/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image
+            src="sp/3x/instagram.menu.png"
+            class="nav-sp-link d-shadow"
+            alt="Instagramへ"
+          ></Image>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.youtube.com/channel/UCzTW_KyoA5BrI53ikFUdMGA"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image
+            src="sp/3x/youtube.menu.png"
+            class="nav-sp-link d-shadow"
+            alt="Youtubeチャンネルへ"
+          ></Image>
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://twitter.com/DOKs62"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image
+            src="sp/3x/twitter.menu.png"
+            class="nav-sp-link d-shadow"
+            alt="Twitterへ"
+          ></Image>
+        </a>
+      </li>
+    </ul>
+  </div>
   <a href="#contact" class="contact-link">
     <Image
       src="pc/2x/callout.header.png"
@@ -41,16 +102,14 @@
       alt="FREE"
       class="nav-callout"
       style="width: 83px;"
-    />
+    ></Image>
     <Image
       src="pc/2x/mail.png"
       width="62*2"
       alt="ご依頼・ご相談"
       style="width: 62px;"
-    />
+    ></Image>
   </a>
-
-  <!-- <MobileMenu></MobileMenu> -->
 </nav>
 
 <style>
@@ -74,12 +133,15 @@
     margin-left: 1.5rem;
   }
   ul {
+    padding: 0;
+  }
+  .ul-main {
     height: 100%;
     display: flex;
     align-items: center;
-    margin-left: 4%;
+    margin: 0.3rem 0 0 4%;
   }
-  li {
+  .li-main {
     height: 100%;
     margin-right: 3%;
     white-space: nowrap;
@@ -101,7 +163,112 @@
     margin-right: 0.5rem;
     margin-top: 1.25rem;
   }
+  :global(.nav-sp-mail) {
+    display: block;
+    height: 39px;
+  }
+  .sp-menu {
+    display: none;
+  }
+  .ul-sp {
+    display: none;
+  }
 
-  @media screen {
+  @media (max-width: 1160px) {
+    h1 {
+      font-size: 2.2rem;
+      margin-left: 1rem;
+    }
+    .li-main {
+      margin: 0;
+    }
+    .ul-main {
+      margin-left: 2%;
+    }
+    .nav-link {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    h1 {
+      font-size: 1.9rem;
+    }
+    .nav-link {
+      padding: 0 0.8rem;
+    }
+    :global(.nav-callout) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 890px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 3.75rem;
+    }
+    .noshadow {
+      box-shadow: none;
+    }
+    .wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.75rem;
+    }
+    h1 {
+      font-size: 1.7rem;
+    }
+    .contact-link {
+      display: none;
+    }
+    .sp-menu {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .sp-list {
+      background-color: rgba(130, 38, 18, 0.9);
+      width: 100%;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 6px var(--shadow);
+    }
+    ul {
+      margin: 0;
+    }
+    .ul-main {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 auto;
+      width: 80%;
+      height: auto;
+    }
+    .expanded {
+      transform: scaleY(1);
+    }
+    .li-main {
+      width: 100%;
+      border-bottom: solid 1px #fff;
+    }
+    .nav-link {
+      font-size: 1.45rem;
+      font-weight: normal;
+      padding: 3rem 1rem 5px;
+    }
+    .ul-sp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    :global(.nav-sp-link) {
+      display: block;
+      width: 55px;
+      margin: 50px 30px;
+    }
   }
 </style>
