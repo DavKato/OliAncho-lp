@@ -1,50 +1,46 @@
 <script>
+  import Image from 'svelte-i-pack'
   import Btn from '../fragments/Btn.svelte'
 </script>
 
 <section id="features">
   <div class="container">
-    <img
+    <Image
       src="pc/2x/leaf2.png"
+      width="303*2"
       alt=""
-      srcset="pc/1x/leaf2.png 1x, pc/2x/leaf2.png 2x"
-      class="leaf1"
-    />
-    <img
+      class="feat-leaf1"
+    ></Image>
+    <Image
       src="pc/2x/leaf4.png"
+      width="521*2"
       alt=""
-      srcset="pc/1x/leaf4.png 1x, pc/2x/leaf4.png 2x"
-      class="leaf2"
-    />
+      class="feat-leaf2"
+    ></Image>
     <div class="fairy-box">
-      <img
-        src="pc/2x/leaves.man.png"
-        alt=""
-        srcset="pc/1x/leaves.man.png 1x, pc/2x/leaves.man.png 2x"
-        class="img-fairy"
-      />
-      <img
+      <Image src="pc/2x/leaves.man.png" width="751*2" alt=""></Image>
+      <Image
         src="pc/2x/words.red.png"
+        width="420*2"
         alt=""
-        srcset="pc/1x/words.red.png 1x, pc/2x/words.red.png 2x"
-        class="img-fairy-words"
-      />
+        class="feat-fairy-words"
+      ></Image>
     </div>
 
     <h1>OliAncho<span class="title-span">あんしんの理由</span></h1>
     <div class="title-box">
-      <img
+      <Image
         src="pc/2x/words.redblack.png"
+        width="393*2"
         alt=""
-        srcset="pc/1x/words.redblack.png 1x, pc/2x/words.redblack.png 2x"
-        class="img-title"
-      />
-      <img
+        class="feat-title"
+      ></Image>
+      <Image
         src="pc/2x/line.reason.png"
+        width="488*2"
         alt=""
-        srcset="pc/1x/line.reason.png 1x, pc/2x/line.reason.png 2x"
-        class="img-line"
-      />
+        class="feat-line"
+      ></Image>
     </div>
     <dl>
       <div class="caption-box caption-box1">
@@ -94,21 +90,13 @@
   <p>わたしたちはWEBクリエイターとして夫婦で活動しています。</p>
   <p>いつでもお気軽にお問い合わせください :)</p>
   <a href="#contact">
-    <Btn text="ご依頼・ご相談はこちらから" m0a>
-      <img
+    <Btn text="ご依頼・ご相談はこちらから" m0a postLine>
+      <Image
         src="pc/2x/davigobu.small.png"
+        width="74*2"
         alt=""
-        srcset="pc/1x/davigobu.small.png 1x, pc/2x/davigobu.small.png 2x"
-        class="img-davigobu"
-        slot="pre-img"
-      />
-      <img
-        src="pc/2x/line.button.png"
-        alt=""
-        srcset="pc/1x/line.button.png 1x, pc/2x/line.button.png 2x"
-        class="img-deco-btn"
-        slot="post-img"
-      />
+        class="feat-davigobu"
+      ></Image>
     </Btn>
   </a>
 </section>
@@ -152,11 +140,11 @@
     width: 464px;
     margin-bottom: 3rem;
   }
-  .img-title {
+  :global(.feat-title) {
     width: 393px;
     height: 65px;
   }
-  .img-line {
+  :global(.feat-line) {
     width: 488px;
     height: 300px;
     position: absolute;
@@ -250,17 +238,11 @@
   p:last-of-type {
     margin: 0 0 2.6rem;
   }
-  .img-davigobu {
+  :global(.feat-davigobu) {
     width: 74px;
     height: 74px;
     margin-right: 0.2rem;
   }
-  .img-deco-btn {
-    position: absolute;
-    left: 105%;
-    top: -34%;
-  }
-
   .deco-num {
     position: absolute;
     color: rgba(132, 38, 18, 0.25);
@@ -279,14 +261,14 @@
     top: 29%;
     left: 90%;
   }
-  .leaf1 {
+  :global(.feat-leaf1) {
     position: absolute;
     width: 303px;
     top: 10%;
     left: 14%;
     transform: rotate(24deg);
   }
-  .leaf2 {
+  :global(.feat-leaf2) {
     position: absolute;
     width: 521px;
     transform: rotate(-40deg);
@@ -298,8 +280,9 @@
     top: 62%;
     right: 53%;
   }
-  .img-fairy-words {
+  :global(.feat-fairy-words) {
     position: absolute;
+    width: 420px;
     transform: rotate(61deg);
     top: 45%;
     left: 37%;

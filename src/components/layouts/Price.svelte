@@ -1,5 +1,6 @@
 <script>
   import YellowCircle from '../materials/YellowCircle.svelte'
+  import Image from 'svelte-i-pack'
 
   const list = [
     {
@@ -26,24 +27,25 @@
 </script>
 <section id="price">
   <YellowCircle top="-20%" left="36%"></YellowCircle>
-  <img
+  <Image
     src="pc/2x/leaf3.png"
+    width="502*2"
     alt=""
-    srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-    class="img-leaf"
-  />
-  <img src="svg/spiderweb.svg" alt="" class="web1" />
-  <img src="svg/spiderweb.svg" alt="" class="web2" />
+    class="price-leaf abs"
+    no-inline
+  ></Image>
+  <img src="svg/spiderweb.svg" alt="" class="web1 abs d-shadow" />
+  <img src="svg/spiderweb.svg" alt="" class="web2 abs d-shadow" />
 
   <div class="container">
     <h1>
       お値段
-      <img
+      <Image
         src="pc/2x/line.contact.png"
-        srcset="pc/1x/line.contact.png 1x, pc/2x/line.contact.png 2x"
+        width="284*2"
         alt=""
-        class="img-line"
-      />
+        class="price-line abs d-shadow"
+      ></Image>
     </h1>
     <dl>
       {#each list as item, i}
@@ -51,7 +53,7 @@
         <dt>{item.title}</dt>
         <dd class:runner="{i === 0}">
           {item.price} {#if i === 0}
-          <img src="pc/1x/spider.thread.price.png" alt="" class="spider" />
+          <Image src="pc/2x/spider.thread.price.png" width="1303*2" alt="" class="price-spider abs d-shadow" />
           {/if}
         </dd>
       </div>
@@ -61,11 +63,6 @@
 </section>
 
 <style>
-  img {
-    position: absolute;
-    filter: drop-shadow(5px 5px 6px var(--shadow));
-  }
-
   section {
     position: relative;
     margin-top: 15rem;
@@ -84,12 +81,11 @@
     line-height: 1.3;
     font-weight: 700;
   }
-  .img-line {
+  :global(.price-line) {
     position: absolute;
     width: 20rem;
     bottom: -190%;
     right: -81%;
-    filter: drop-shadow(0px 3px 6px var(--d-shadow));
   }
   dl {
     margin-top: 5rem;
@@ -113,9 +109,10 @@
   .runner {
     position: relative;
   }
-  .spider {
+  :global(.price-spider) {
     bottom: 0;
     right: 94%;
+    width: 1303px;
     transform: translateY(40%);
   }
 
@@ -133,10 +130,11 @@
     bottom: 6%;
     right: 73%;
   }
-  .img-leaf {
+  :global(.price-leaf) {
     width: 335px;
     bottom: 4.5%;
     right: 72.5%;
     transform: rotate(155deg);
+    filter: drop-shadow(-4px -4px 3px var(--shadow));
   }
 </style>

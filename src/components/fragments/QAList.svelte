@@ -61,13 +61,13 @@
   {#each list as item, i (item.q)}
   <div class="list-box" on:click="{toggle(i)}">
     <dt class:dt-expanded="{item.toggled}">
-      <img src="pc/1x/q{i+1}.png" alt="" class="img-q" />
+      <img src="img/q{i+1}.png" alt="" class="img-q" />
       <div class="text-qa">{ item.q }</div>
       <FoldIcon toggled="{item.toggled}"></FoldIcon>
     </dt>
     {#if item.toggled}
     <dd transition:slide="{{easing: quintOut}}">
-      <img src="pc/1x/a{i+1}.png" alt="" class="img-a" />
+      <img src="img/a{i+1}.png" alt="" class="img-a" />
       <div class="text-qa">{ item.a }</div>
     </dd>
     {/if}
@@ -106,7 +106,7 @@
     border-bottom-right-radius: 0px;
   }
   .text-qa {
-    padding: 1rem 2.4rem 1rem 151px;
+    padding: 1rem 3rem 1rem 151px;
     line-height: 1.9;
   }
   .img-q {

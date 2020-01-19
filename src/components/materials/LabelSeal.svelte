@@ -24,7 +24,7 @@
     position: absolute;
     font-size: 2.8rem;
     font-weight: 700;
-    color: rgba(212, 202, 110, 0.8);
+    color: rgba(212, 202, 110, 0.6);
     white-space: nowrap;
     text-align: right;
     overflow: hidden;

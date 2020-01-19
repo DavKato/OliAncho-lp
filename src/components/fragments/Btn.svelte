@@ -2,17 +2,26 @@
   export let text,
     type = '',
     disabled = false,
-    m0a = false
+    m0a = false,
+    postLine = false
 </script>
 <button class:m0a {disabled} {type}>
-  <slot name="pre-img"></slot>
+  <slot></slot>
   <span>{ text }</span>
-  <img
+  <Image
     src="pc/2x/callout.button.png"
+    width="98*2"
     alt=""
-    srcset="pc/1x/callout.button.png 1x, pc/2x/callout.button.png 2x"
-  />
-  <slot name="post-img"></slot>
+    class="btn-cto"
+  ></Image>
+  {#if postLine}
+  <Image
+    src="pc/2x/line.button.png"
+    width="142*2"
+    alt=""
+    class="btn-deco"
+  ></Image>
+  {/if}
 </button>
 
 <style>
@@ -32,7 +41,7 @@
     font-weight: 700;
     padding: 1.23rem 0;
   }
-  img {
+  :global(.btn-cto) {
     width: 98px;
     height: 66px;
     margin-top: -1.6rem;
@@ -43,5 +52,11 @@
   [disabled] {
     background-color: #968b88;
     cursor: initial;
+  }
+  :global(.btn-deco) {
+    position: absolute;
+    left: 105%;
+    top: -34%;
+    width: 142px;
   }
 </style>

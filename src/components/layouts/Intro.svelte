@@ -1,4 +1,5 @@
 <script>
+  import Image from 'svelte-i-pack'
   import DownArrow from '../materials/DownArrow.svelte'
   import SimpleLine from '../materials/SimpleLine.svelte'
 
@@ -29,11 +30,12 @@
     <div class="deco-box">
       <span class="q1">?</span><span class="q2">?</span
       ><span class="q3">?</span>
-      <img
+      <Image
         src="pc/2x/gentleman.black.png"
+        width="836*2"
         alt=""
-        srcset="pc/1x/gentleman.black.png 1x, pc/2x/gentleman.black.png 2x"
-      />
+        class="intro-man"
+      ></Image>
     </div>
 
     <DownArrow color="var(--ocher)"></DownArrow>
@@ -134,7 +136,7 @@
     left: 58%;
     transform: rotate(15deg);
   }
-  img {
+  :global(.intro-man) {
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -1,3 +1,6 @@
+<script>
+  import Image from 'svelte-i-pack'
+</script>
 <footer>
   <div>
     <a
@@ -5,12 +8,12 @@
       target="_blank"
       rel="noreferrer noopener"
     >
-      <img
-        srcset="pc/1x/instagram.png 1x, pc/2x/instagram.png 2x"
+      <Image
         src="pc/2x/instagram.png"
+        width="50*2"
         alt="Instagramへ"
-        class="link"
-      />
+        class="bottoms-link d-shadow"
+      ></Image>
     </a>
 
     <a
@@ -18,12 +21,12 @@
       target="_blank"
       rel="noreferrer noopener"
     >
-      <img
-        srcset="pc/1x/youtube.png 1x, pc/2x/youtube.png 2x"
+      <Image
         src="pc/2x/youtube.png"
-        alt="Instagramへ"
-        class="link"
-      />
+        width="50*2"
+        alt="Youtubeチャンネルへ"
+        class="bottoms-link d-shadow"
+      ></Image>
     </a>
 
     <a
@@ -31,29 +34,29 @@
       target="_blank"
       rel="noreferrer noopener"
     >
-      <img
-        srcset="pc/1x/twitter.png 1x, pc/2x/twitter.png 2x"
+      <Image
         src="pc/2x/twitter.png"
-        alt="Instagramへ"
-        class="link"
-      />
+        width="50*2"
+        alt="Twitterへ"
+        class="bottoms-link"
+      ></Image>
     </a>
   </div>
 
   <div class="davigobu-box">
-    <img
-      srcset="pc/1x/about-davigobu.png 1x, pc/2x/about-davigobu.png 2x"
+    <Image
       src="pc/2x/about-davigobu.png"
-      alt="Instagramへ"
-      class="img-davigobu"
-    />
+      width="188*2"
+      alt
+      class="bottoms-davigobu"
+    ></Image>
     <div class="balloon-box">
-      <img
-        srcset="pc/1x/callout.footer.png 1x, pc/2x/callout.footer.png 2x"
+      <Image
         src="pc/2x/callout.footer.png"
-        alt="Instagramへ"
-        class="img-balloon"
-      />
+        width="112*2"
+        alt
+        class="bottoms-balloon"
+      ></Image>
       <p class="balloon-text">海外での ノマド生活について 配信しています♪</p>
     </div>
   </div>
@@ -71,9 +74,8 @@
     padding-top: 60px;
     margin-top: 70px;
   }
-  .link {
+  :global(.bottoms-link) {
     width: 50px;
-    filter: drop-shadow(5px 5px 6px var(--d-shadow));
   }
   a:not(:last-child) {
     margin-right: 28px;
@@ -81,7 +83,7 @@
   .davigobu-box {
     position: relative;
   }
-  .img-davigobu {
+  :global(.bottoms-davigobu) {
     width: 188px;
   }
   .balloon-box {
@@ -91,7 +93,7 @@
     top: 20px;
     left: 100%;
   }
-  .img-balloon {
+  :global(.bottoms-balloon) {
     width: 112px;
     position: absolute;
     top: 0;

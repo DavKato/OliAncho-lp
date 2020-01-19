@@ -921,7 +921,7 @@ astral-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
 
-autoprefixer@^9.4.5, autoprefixer@^9.7.3:
+autoprefixer@^9.4.5:
   version "9.7.3"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.7.3.tgz#fd42ed03f53de9beb4ca0d61fb4f7268a9bb50b4"
   integrity sha512-8T5Y1C5Iyj6PgkPSFd0ODvK9DIleuPKUPYniNxybS47g2k2wFgLZ46lGQHlBuGKIAEV8fbCDfKCCRS1tvOgc3Q==
@@ -932,6 +932,19 @@ autoprefixer@^9.4.5, autoprefixer@^9.7.3:
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.23"
+    postcss-value-parser "^4.0.2"
+
+autoprefixer@^9.7.4:
+  version "9.7.4"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.7.4.tgz#f8bf3e06707d047f0641d87aee8cfb174b2a5378"
+  integrity sha512-g0Ya30YrMBAEZk60lp+qfX5YQllG+S5W3GYCFvyHTvhOki0AEQJLPEcIuGRsqVwLi8FvXPVtwTGhfr38hVpm0g==
+  dependencies:
+    browserslist "^4.8.3"
+    caniuse-lite "^1.0.30001020"
+    chalk "^2.4.2"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^7.0.26"
     postcss-value-parser "^4.0.2"
 
 babel-plugin-dynamic-import-node@^2.3.0:
@@ -1050,6 +1063,11 @@ caniuse-lite@^1.0.30001017:
   version "1.0.30001020"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001020.tgz#3f04c1737500ffda78be9beb0b5c1e2070e15926"
   integrity sha512-yWIvwA68wRHKanAVS1GjN8vajAv7MBFshullKCeq/eKpK7pJBVDgFFEqvgWTkcP2+wIDeQGYFRXECjKZnLkUjA==
+
+caniuse-lite@^1.0.30001020:
+  version "1.0.30001021"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001021.tgz#e75ed1ef6dbadd580ac7e7720bb16f07b083f254"
+  integrity sha512-wuMhT7/hwkgd8gldgp2jcrUjOU9RXJ4XxGumQeOsUr91l3WwmM68Cpa/ymCnWEDqakwFXhuDQbaKNHXBPgeE9g==
 
 chalk@^2.0.0, chalk@^2.1.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -3229,10 +3247,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte-i-pack@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/svelte-i-pack/-/svelte-i-pack-0.1.5.tgz#1b3975e011dc5d3aea625f78b3b67846b87baec6"
-  integrity sha512-yS+XgRjg3sgZPbX/kJXCkOgHAUBHJI/kPYH+hv17+A7ecr32KLzcaqHYCtHW/A42CeCV21kCkDLqjnziYIj7Gw==
+svelte-i-pack@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/svelte-i-pack/-/svelte-i-pack-0.2.5.tgz#7e00131cd5f14d17e5a5ad73255e825896b2ebde"
+  integrity sha512-G2+1DikGO8M+NJ/vKdQVlBwgvQl8Zt72d3paTgyxqhU4jA/7lzmgPlKjBZJgq+fPhxfKI11LVQPjkA0DQqtsCg==
   dependencies:
     sharp "^0.23.4"
     svelte "^3.0.0"
@@ -3247,10 +3265,10 @@ svelte-preprocess@^3.3.0:
     detect-indent "^6.0.0"
     strip-indent "^2.0.0"
 
-svelte@^3.0.0, svelte@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.17.0.tgz#c633d13aa436ef37d701bb24e1022837230af318"
-  integrity sha512-/ycVYZ7etveSnJU7pSeZ3KHbuK9OfdQRheEIBPf12lomElNMc1c3tML0STVQUrpcFClUAAwufEaaeiuY43X12w==
+svelte@^3.0.0, svelte@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.17.1.tgz#71aedbfb5bf831dad7b00a944f2fdded6b482184"
+  integrity sha512-IjX6agpbu01VHBaL/12oFem+ufPRyZNLkg4ay7lJl7IbUB/er90kdIsWCNZX44XaniSEhG/0Hja4GsrtufTwCw==
 
 table@^5.2.3:
   version "5.4.6"

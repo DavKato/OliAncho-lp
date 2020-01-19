@@ -38,15 +38,13 @@
     <Image
       src="pc/2x/callout.header.png"
       width="83*2"
-      sizes="83px"
       alt="FREE"
-      class="callout"
+      class="nav-callout"
       style="width: 83px;"
     />
     <Image
       src="pc/2x/mail.png"
       width="62*2"
-      sizes="62px"
       alt="ご依頼・ご相談"
       style="width: 62px;"
     />
@@ -99,7 +97,7 @@
     margin-left: auto;
     margin-right: 1.5rem;
   }
-  :global(.callout) {
+  :global(.nav-callout) {
     margin-right: 0.5rem;
     margin-top: 1.25rem;
   }

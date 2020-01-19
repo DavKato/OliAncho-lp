@@ -41,12 +41,11 @@
   <div class="h-box">
     <h1>
       お問い合わせ
-      <img
+      <Image
         src="pc/2x/line.contact.png"
-        srcset="pc/1x/line.contact.png 1x, pc/2x/line.contact.png 2x"
         alt=""
-        class="img-line"
-      />
+        class="contact-line d-shadow-light"
+      ></Image>
     </h1>
     <p class="title-p">
       ヒアリングからお見積もりまで<strong
@@ -127,19 +126,16 @@
     line-height: 1.3;
     font-weight: 700;
   }
-  .img-line {
+  :global(.contact-line) {
     position: absolute;
     width: 17.1rem;
     bottom: -182%;
     right: 4%;
-    filter: drop-shadow(0px 3px 6px var(--d-shadow));
   }
   .title-p {
     font-size: 1.3rem;
     line-height: 2.1;
     margin-top: 5rem;
-  }
-  strong {
   }
 
   form {

@@ -1,4 +1,5 @@
 <script>
+  import Image from 'svelte-i-pack'
   export let isValidArr
 </script>
 <div class="deco-container">
@@ -6,19 +7,23 @@
   {#each isValidArr as isValid, i}
   <div class="leaf-container leaf-container{i + 1}">
     <div class="leaf-box" class:isValid>
-      <img
+      <Image
         src="pc/2x/leaf3.png"
+        width="501*2"
         alt=""
-        srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-      />
+        class="fbox-leaf"
+        no-inline
+      ></Image>
       <span class="ok">OK</span>
     </div>
     <div class="leaf-box leaf-box-ng" class:isValid="{!isValid}">
-      <img
+      <Image
         src="pc/2x/leaf3.png"
+        width="501*2"
+        class="fbox-leaf"
         alt=""
-        srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-      />
+        no-inline
+      ></Image>
       <span>NG</span>
     </div>
   </div>
@@ -29,7 +34,7 @@
   .deco-container {
     position: absolute;
     left: 14%;
-    bottom: -0.2rem;
+    bottom: -1rem;
   }
   .img-flower {
     height: 57.3rem;
@@ -62,7 +67,7 @@
   .leaf-box-ng {
     transform: rotateX(180deg);
   }
-  .leaf-box > img {
+  :global(.fbox-leaf) {
     width: 130px;
   }
   span {

@@ -1,4 +1,5 @@
 <script>
+  import Image from 'svelte-i-pack'
   import CompTable from '../fragments/ComparisonTable.svelte'
   import YellowCircle from '../materials/YellowCircle.svelte'
   import SimpleLine from '../materials/SimpleLine.svelte'
@@ -7,12 +8,12 @@
 
 <section id="comparison">
   <YellowCircle top="-15.5%" right="30%"></YellowCircle>
-  <img
+  <Image
     src="pc/2x/leaf.man.png"
+    width="614*2"
     alt=""
-    srcset="pc/1x/leaf.man.png 1x, pc/2x/leaf.man.png 2x"
-    class="img-leafman"
-  />
+    class="comp-leafman"
+  ></Image>
 
   <div class="container">
     <div class="h-container">
@@ -21,12 +22,12 @@
       <SimpleLine x="52" y="55" color="var(--wine)"></SimpleLine>
       <div class="h2-box">
         <h2>OliAnchoは<br /><Dot sentence="ここ"></Dot>がちがう！</h2>
-        <img
+        <Image
           src="pc/2x/gunya.white.png"
+          width="316*2"
           alt=""
-          srcset="pc/1x/gunya.white.png 1x, pc/2x/gunya.white.png 2x"
-          class="img-gunya"
-        />
+          class="comp-gunya"
+        ></Image>
       </div>
     </div>
 
@@ -46,12 +47,12 @@
             >あなたにぴったり</span
           >のWEBサイトをご提案します:)
         </p>
-        <img
+        <Image
           src="pc/2x/line.difference.png"
+          width="702*2"
           alt=""
-          srcset="pc/1x/line.difference.png 1x, pc/2x/line.difference.png 2x"
-          class="img-line"
-        />
+          class="comp-line"
+        ></Image>
       </div>
     </div>
   </div>
@@ -95,10 +96,11 @@
     line-height: 1.3;
     z-index: 20;
   }
-  .img-gunya {
+  :global(.comp-gunya) {
     position: absolute;
     top: 51%;
     left: 45%;
+    width: 316px;
     transform: translate(-50%, -50%) rotate(16deg);
     z-index: 10;
   }
@@ -128,13 +130,13 @@
   .underline {
     text-decoration: #fff underline;
   }
-  .img-line {
+  :global(.comp-line) {
     position: absolute;
     top: 45%;
     right: 28%;
     filter: drop-shadow(3px 3px 6px var(--shadow));
   }
-  .img-leafman {
+  :global(.comp-leafman) {
     position: absolute;
     bottom: 0;
     left: 63%;

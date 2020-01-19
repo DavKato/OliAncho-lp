@@ -5,8 +5,7 @@ import svelte from 'rollup-plugin-svelte'
 import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup'
-// import { postcss, globalStyle } from 'svelte-preprocess'
-import sveltePreprocess from 'svelte-preprocess'
+import { postcss, globalStyle } from 'svelte-preprocess'
 import iPack from 'svelte-i-pack'
 import pkg from './package.json'
 
@@ -14,6 +13,7 @@ const mode = process.env.NODE_ENV
 const dev = mode === 'development'
 const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
+// eslint-disable-next-line no-shadow
 const onwarn = (warning, onwarn) =>
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
@@ -21,7 +21,10 @@ const onwarn = (warning, onwarn) =>
 const dedupe = importee =>
   importee === 'svelte' || importee.startsWith('svelte/')
 
-const preprocess = [iPack(), sveltePreprocess({ postcss: true })]
+const preprocess = [
+  postcss({ plugins: [require('autoprefixer')()] }),
+  globalStyle(),
+]
 
 export default {
   client: {
@@ -32,6 +35,7 @@ export default {
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
+      iPack(),
       svelte({
         dev,
         preprocess,
@@ -84,6 +88,7 @@ export default {
         'process.browser': false,
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
+      iPack(),
       svelte({
         generate: 'ssr',
         dev,

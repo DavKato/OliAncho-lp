@@ -1,4 +1,5 @@
 <script>
+  import Image from 'svelte-i-pack'
   const list = [
     {
       heading: '無料相談・お見積もり',
@@ -30,41 +31,41 @@
 
 <section id="flow">
   <!-- Deco -->
-  <img
+  <Image
     src="pc/2x/olivetree.png"
+    width="1670*2"
     alt=""
-    srcset="pc/1x/olivetree.png 1x, pc/2x/olivetree.png 2x"
-    class="img-tree"
-  />
-  <img
+    class="flow-tree abs"
+  ></Image>
+  <Image
     src="pc/2x/leaf3.png"
+    width="501*2"
     alt=""
-    srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-    class="drop-shadow img-leaf1"
-  />
-  <img
+    class="flow-leaf1 abs"
+  ></Image>
+  <Image
     src="pc/2x/leaf3.png"
+    width="501*2"
     alt=""
-    srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-    class="drop-shadow img-leaf2"
-  />
-  <img
+    class="flow-leaf2 abs"
+  ></Image>
+  <Image
     src="pc/2x/leaf3.png"
+    width="501*2"
     alt=""
-    srcset="pc/1x/leaf3.png 1x, pc/2x/leaf3.png 2x"
-    class="drop-shadow img-leaf3"
-  />
+    class="flow-leaf3 abs"
+  ></Image>
   <!-- /Deco -->
 
   <div class="container">
     <h1>
       ご納品までの流れ
-      <img
+      <Image
         src="pc/2x/line.flow.png"
-        srcset="pc/1x/line.flow.png 1x, pc/2x/line.flow.png 2x"
+        width="376*2"
         alt=""
-        class="img-line"
-      />
+        class="flow-line abs d-shadow-light"
+      ></Image>
     </h1>
 
     <dl>
@@ -83,10 +84,6 @@
 </section>
 
 <style>
-  img {
-    position: absolute;
-  }
-
   section {
     margin-top: 20rem;
     position: relative;
@@ -103,11 +100,11 @@
     line-height: 1.3;
     font-weight: 700;
   }
-  .img-line {
+  :global(.flow-line) {
     position: absolute;
     bottom: -204%;
     right: 7.5%;
-    filter: drop-shadow(0px 3px 6px var(--d-shadow));
+    width: 376px;
   }
   dl {
     margin-top: 5rem;
@@ -165,29 +162,29 @@
     line-height: 1.9;
   }
 
-  .img-tree {
+  :global(.flow-tree) {
     left: 0;
     bottom: 0;
     transform: translateX(-45%);
   }
-  .drop-shadow {
-    filter: drop-shadow(5px 5px 6px var(--shadow));
-  }
-  .img-leaf1 {
+  :global(.flow-leaf1) {
     width: 472px;
     top: -25%;
     right: -5%;
     transform: rotate(-48deg);
+    filter: drop-shadow(-1px 5px 3px var(--shadow));
   }
-  .img-leaf2 {
+  :global(.flow-leaf2) {
     width: 438px;
     top: 63%;
     right: -3%;
+    filter: drop-shadow(11px 5px 3px var(--shadow));
   }
-  .img-leaf3 {
+  :global(.flow-leaf3) {
     width: 456px;
     top: 0;
     left: -6%;
     transform: rotate(129deg);
+    filter: drop-shadow(2px -5px 3px var(--shadow));
   }
 </style>

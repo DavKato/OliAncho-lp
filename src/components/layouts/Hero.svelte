@@ -28,10 +28,10 @@
       <img src="svg/wine.svg" alt="" />
       <Image
         src="pc/2x/leaf3.png"
-        width="160*2"
+        width="502*2"
         sizes="160px"
         alt=""
-        class="leaf"
+        class="hero-leaf"
       ></Image>
       <h2 class="left-title">WEBサイト制作<br />承ります</h2>
     </div>
@@ -47,15 +47,14 @@
       {#each spiders as spider}
       <div class="spider-box">
         <p class="spider-text">{spider.text}</p>
-        <img
+        <Image
           src="pc/2x/spider.thread.top.png"
-          srcset="
-            pc/1x/spider.thread.top.png 1x,
-            pc/2x/spider.thread.top.png 2x
-          "
-          class="spider"
+          width="54*2"
+          class="hero-spider"
+          style="width: 54px;"
           alt=""
-        />
+          no-inline
+        ></Image>
       </div>
       {/each}
     </div>
@@ -87,7 +86,7 @@
     position: relative;
     padding-bottom: 1rem;
   }
-  .leaf {
+  :global(.hero-leaf) {
     top: 8%;
     left: 19%;
     transform: rotate(22deg);
@@ -156,7 +155,7 @@
     margin: 0;
     line-height: 5rem;
   }
-  .spider {
+  :global(.hero-spider) {
     position: absolute;
     bottom: 72%;
     left: 50%;

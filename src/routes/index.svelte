@@ -1,5 +1,4 @@
 <script>
-  import Tailwindcss from '../Tailwindcss.svelte'
   import Navbar from '../components/layouts/Navbar.svelte'
   import Hero from '../components/layouts/Hero.svelte'
   import Intro from '../components/layouts/Intro.svelte'
@@ -11,8 +10,6 @@
   import Contact from '../components/layouts/Contact.svelte'
   import Bottoms from '../components/layouts/Bottoms.svelte'
 </script>
-
-<!-- <Tailwindcss></Tailwindcss> -->
 
 <Navbar></Navbar>
 
@@ -50,5 +47,14 @@
   }
   #sapper {
     overflow: hidden;
+  }
+  .d-shadow {
+    filter: drop-shadow(5px 5px 3px var(--shadow));
+  }
+  .d-shadow-light {
+    filter: drop-shadow(0px 3px 5px var(--d-shadow));
+  }
+  .abs {
+    position: absolute;
   }
 </style>
