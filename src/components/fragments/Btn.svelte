@@ -27,7 +27,7 @@
 <style>
   button {
     background-color: var(--wine);
-    border-radius: 34px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     padding: 0 1rem 0 2rem;
@@ -43,7 +43,6 @@
   }
   :global(.btn-cto) {
     width: 98px;
-    height: 66px;
     margin-top: -1.6rem;
   }
   .m0a {
@@ -58,5 +57,44 @@
     left: 105%;
     top: -34%;
     width: 142px;
+  }
+
+  @media (max-width: 1000px) {
+    span {
+      font-size: 1.7rem;
+    }
+  }
+  @media (max-width: 890px) {
+    span {
+      font-size: 1.5rem;
+      padding: 0;
+    }
+    :global(.btn-cto) {
+      width: 85px;
+    }
+    :global(.btn-deco) {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    button {
+      padding: 0 0.4rem 0px 1rem;
+    }
+    span {
+      font-size: 1.3rem;
+    }
+    :global(.btn-cto) {
+      width: 73px;
+    }
+  }
+  @media (max-width: 580px) {
+    span {
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 460px) {
+    span {
+      padding: 0.9rem 0;
+    }
   }
 </style>

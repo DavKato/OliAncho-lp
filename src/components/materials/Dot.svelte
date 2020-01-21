@@ -25,4 +25,14 @@
     display: flex;
     justify-content: center;
   }
+  @media (max-width: 720px) {
+    span:after {
+      font-size: 2rem;
+    }
+  }
+  @media (max-width: 580px) {
+    span:after {
+      font-size: 1.5rem;
+    }
+  }
 </style>

@@ -30,7 +30,7 @@
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
 
-<nav class:noshadow="{expanded}" on:click|stopPropagation>
+<nav class:noshadow="{expanded}">
   <div class="wrap">
     <a href="#hero"> <h1>OliAncho</h1></a>
     <div class="sp-menu">

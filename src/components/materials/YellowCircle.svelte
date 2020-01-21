@@ -1,10 +1,9 @@
 <script>
-  export let top,
-    left = 'auto',
-    right = 'auto',
-    big = false
+  export let comp = false,
+    price = false,
+    contact = false
 </script>
-<div style="top: {top}; left: {left}; right: {right};" class:big></div>
+<div class:comp class:price class:contact></div>
 
 <style>
   div {
@@ -14,10 +13,48 @@
     border-radius: 50%;
     position: absolute;
   }
-  .big {
+  .comp {
+    top: -15.5%;
+    right: 30%;
+  }
+  .price {
+    top: -20%;
+    left: 36%;
+  }
+  .contact {
+    top: -8%;
+    left: -22%;
     width: 140vw;
     min-width: 1900px;
     height: 100vw;
     min-height: 1500px;
+  }
+
+  @media (max-width: 1000px) {
+    .comp {
+      right: 27%;
+    }
+  }
+  @media (max-width: 890px) {
+    .comp {
+      top: -18%;
+      right: 19%;
+      width: 1400px;
+      height: 1400px;
+    }
+  }
+  @media (max-width: 720px) {
+    .comp {
+      top: -21%;
+      width: 1100px;
+      height: 1100px;
+    }
+  }
+  @media (max-width: 580px) {
+    .comp {
+      top: -16%;
+      width: 980px;
+      height: 980px;
+    }
   }
 </style>

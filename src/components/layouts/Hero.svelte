@@ -25,13 +25,14 @@
 <header id="hero" tabindex="-1">
   <div class="left-box">
     <div class="wine-box">
-      <img src="svg/wine.svg" alt="" />
+      <img src="svg/wine.svg" alt="" class="wine-img" />
       <Image
         src="pc/2x/leaf3.png"
         width="502*2"
         sizes="160px"
         alt=""
         class="hero-leaf"
+        no-inline
       ></Image>
       <h2 class="left-title">WEBサイト制作<br />承ります</h2>
     </div>
@@ -51,7 +52,6 @@
           src="pc/2x/spider.thread.top.png"
           width="54*2"
           class="hero-spider"
-          style="width: 54px;"
           alt=""
           no-inline
         ></Image>
@@ -77,6 +77,9 @@
     width: 100%;
     box-shadow: 0 5px 6px var(--shadow);
   }
+  header:focus {
+    outline: none;
+  }
   .left-box {
     width: 40%;
   }
@@ -86,15 +89,18 @@
     position: relative;
     padding-bottom: 1rem;
   }
+  .wine-img {
+    width: 400px;
+  }
   :global(.hero-leaf) {
     top: 8%;
     left: 19%;
     transform: rotate(22deg);
     position: absolute;
-    width: 10rem;
+    width: 160px;
   }
   .left-title {
-    top: 26.5%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
@@ -108,6 +114,7 @@
     padding-bottom: 5rem;
     width: 58%;
     max-width: 830px;
+    min-width: 740px;
     margin-left: 2.3rem;
   }
   .right-title {
@@ -159,7 +166,182 @@
     position: absolute;
     bottom: 72%;
     left: 50%;
+    width: 54px;
     transform: translateX(-50%);
     z-index: 1;
+  }
+
+  @media (max-width: 1150px) {
+    .right-box {
+      margin-left: 0;
+      min-width: 640px;
+    }
+    .strong {
+      font-size: 3.25rem;
+    }
+    .spider-box {
+      width: 16rem;
+      margin-right: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .spider-text {
+      font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 1000px) {
+    .left-box {
+      width: 60%;
+      margin-left: -2rem;
+    }
+    .right-box {
+      min-width: 570px;
+    }
+    .right-title {
+      font-size: 1.7rem;
+    }
+    .strong {
+      font-size: 2.9rem;
+    }
+    .spider-container {
+      margin-left: -7vw;
+    }
+  }
+  @media (max-width: 890px) {
+    header {
+      align-items: flex-start;
+      min-height: auto;
+      height: auto;
+      padding-top: 24rem;
+    }
+    .left-box {
+      width: auto;
+      margin-left: 1.5rem;
+    }
+    .wine-box {
+      padding-bottom: 0.5rem;
+      margin: 0;
+    }
+    .wine-img {
+      width: 360px;
+    }
+    :global(.hero-leaf) {
+      width: 140px;
+    }
+    .right-box {
+      max-width: auto;
+      min-width: auto;
+      width: auto;
+      flex: 1 1 auto;
+      padding: 0;
+    }
+    .right-title {
+      position: absolute;
+      top: 8rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 0;
+    }
+    .spider-container {
+      display: block;
+      margin: 120px 0;
+    }
+    .spider-box {
+      margin-bottom: 2.5rem;
+    }
+    .spider-box:nth-child(1) {
+      margin-left: 9%;
+      margin-right: auto;
+      z-index: 3;
+    }
+    .spider-box:nth-child(2) {
+      margin-right: 4%;
+      margin-left: auto;
+      z-index: 2;
+    }
+    .spider-box:nth-child(3) {
+      margin-right: auto;
+      margin-left: -4%;
+      z-index: 1;
+    }
+    .spider-box:nth-child(4) {
+      margin-right: 18%;
+      margin-left: auto;
+      z-index: 0;
+    }
+  }
+  @media (max-width: 720px) {
+    header {
+      padding-top: 19rem;
+    }
+    .left-box {
+      margin-left: -2rem;
+    }
+    .right-box {
+      margin-left: -2rem;
+    }
+    .right-title {
+      font-size: 1.7rem;
+    }
+    .strong {
+      font-size: 2.7rem;
+    }
+    .spider-box {
+      width: 14rem;
+      height: 3.6rem;
+    }
+    .spider-text {
+      font-size: 1.5rem;
+      line-height: 3.8rem;
+    }
+    :global(.hero-spider) {
+      width: 38px;
+    }
+  }
+  @media (max-width: 580px) {
+    .left-title {
+      font-size: 1.75rem;
+      text-align-last: left;
+      line-height: 1.4;
+      margin-left: 0.2rem;
+    }
+    .right-title {
+      font-size: 1.25rem;
+    }
+    .strong {
+      font-size: 2.5rem;
+    }
+    .left-box {
+      margin-left: -2.4rem;
+    }
+    .wine-box {
+      padding-bottom: 0.2rem;
+    }
+    .wine-img {
+      width: 300px;
+    }
+    :global(.hero-leaf) {
+      width: 120px;
+    }
+    .spider-container {
+      margin: 115px 0 0;
+    }
+    .spider-box {
+      width: 10.9rem;
+      height: 2.75rem;
+      margin-bottom: 2.3rem;
+    }
+    .spider-text {
+      font-size: 1.19rem;
+      line-height: 2.7rem;
+    }
+    @media (max-width: 460px) {
+      .strong {
+        font-size: 2.4rem;
+      }
+      .spider-container {
+        margin-left: -40px;
+      }
+    }
   }
 </style>

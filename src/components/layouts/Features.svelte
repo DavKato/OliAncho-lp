@@ -14,15 +14,29 @@
     <Image
       src="pc/2x/leaf4.png"
       width="521*2"
+      sizes="(max-width: 890px) 250px, 521px"
       alt=""
       class="feat-leaf2"
     ></Image>
     <div class="fairy-box">
-      <Image src="pc/2x/leaves.man.png" width="751*2" alt=""></Image>
+      <Image
+        src="pc/2x/leaves.man.png"
+        width="751*2"
+        media="(max-width: 720px)"
+        sizes="(max-width: 890px) 400px, 751px"
+        aSrc="sp/3x/leaves.man.png"
+        aWidth="278*3"
+        alt=""
+        class="feat-fairy-man"
+      ></Image>
       <Image
         src="pc/2x/words.red.png"
         width="420*2"
+        media="(max-width: 890px)"
+        aSrc="sp/3x/words.red.png"
+        aWidth="144*3"
         alt=""
+        no-inline
         class="feat-fairy-words"
       ></Image>
     </div>
@@ -60,7 +74,7 @@
       <div class="caption-box caption-box2">
         <span class="deco-num deco-num2">2</span>
         <dt>
-          <h2>
+          <h2 class="sec-h2">
             <span class="dt-span dt2-1">WEB初心者さんにも</span><br /><span
               class="dt-span dt2-2"
               >わかりやすい説明を！</span
@@ -87,7 +101,9 @@
       </div>
     </dl>
   </div>
-  <p>わたしたちはWEBクリエイターとして夫婦で活動しています。</p>
+  <p>
+    わたしたちは<br class="sm-br" />WEBクリエイターとして夫婦で活動しています。
+  </p>
   <p>いつでもお気軽にお問い合わせください :)</p>
   <a href="#contact">
     <Btn text="ご依頼・ご相談はこちらから" m0a postLine>
@@ -115,12 +131,13 @@
     box-shadow: 10px 10px 6px var(--shadow);
     padding-top: 0.1rem;
     padding-bottom: 1rem;
+    --tml: 67px;
   }
   h1 {
     font-family: var(--times);
     font-size: 2.2rem;
     font-weight: 500;
-    margin: 0.4rem 4.2rem;
+    margin: 0.4rem var(--tml);
     line-height: 1.4;
   }
   .title-span {
@@ -136,24 +153,25 @@
   }
   .title-box {
     position: relative;
-    text-align: right;
-    width: 464px;
+    display: inline-block;
+    margin-left: var(--tml);
     margin-bottom: 3rem;
+    font-size: 100px;
+    line-height: 0;
   }
   :global(.feat-title) {
-    width: 393px;
-    height: 65px;
+    width: 3.93em;
   }
   :global(.feat-line) {
-    width: 488px;
-    height: 300px;
+    width: 4.88em;
     position: absolute;
-    top: -105px;
+    bottom: -199%;
     right: 0;
   }
 
   dl {
     width: 100%;
+    margin-bottom: 100px;
   }
   .caption-box {
     position: relative;
@@ -238,9 +256,11 @@
   p:last-of-type {
     margin: 0 0 2.6rem;
   }
+  .sm-br {
+    display: none;
+  }
   :global(.feat-davigobu) {
     width: 74px;
-    height: 74px;
     margin-right: 0.2rem;
   }
   .deco-num {
@@ -280,11 +300,274 @@
     top: 62%;
     right: 53%;
   }
+  :global(.feat-fairy-man) {
+    width: 751px;
+  }
   :global(.feat-fairy-words) {
     position: absolute;
     width: 420px;
     transform: rotate(61deg);
     top: 45%;
     left: 37%;
+  }
+  @media (max-width: 1000px) {
+    .title-box {
+      font-size: 90px;
+    }
+    h2 {
+      font-size: 1.9rem;
+    }
+    .caption-box1 {
+      width: 45%;
+    }
+    .caption-box2 {
+      width: 48%;
+    }
+    .caption-box3 {
+      width: 51%;
+    }
+    .fairy-box {
+      right: 48%;
+    }
+    :global(.feat-leaf1) {
+      left: 7%;
+    }
+    p {
+      margin-top: 6rem;
+    }
+  }
+  @media (max-width: 890px) {
+    .container {
+      min-height: auto;
+      padding-bottom: 140px;
+    }
+    h1 {
+      font-size: 1.9rem;
+    }
+    .title-box {
+      font-size: 80px;
+      margin-bottom: 5rem;
+    }
+    dl {
+      margin-bottom: 0;
+    }
+    .caption-box {
+      width: 88%;
+      margin: 26px 0 160px 4%;
+      padding: 0 7% 2.2rem;
+    }
+    .caption-box3 {
+      margin-bottom: 0 !important;
+    }
+    h2 {
+      transform: translateY(-25%);
+      margin: 0;
+    }
+    .last-h2 {
+      text-align: left;
+      margin-top: 0;
+      margin-right: 0;
+    }
+    .dt-span {
+      margin-top: 0;
+    }
+    .dt1-1 {
+      margin-left: -15.5%;
+    }
+    .dt1-2 {
+      margin-left: -4%;
+    }
+    .dt2-1 {
+      margin-left: 0;
+      margin-right: -15%;
+    }
+    .dt2-2 {
+      margin-left: 0;
+      margin-right: -3%;
+    }
+    .dt3-1 {
+      margin-left: 0;
+    }
+    .dt3-2 {
+      margin-left: -16%;
+    }
+    .sec-h2 {
+      text-align: right;
+    }
+    :global(.feat-leaf1) {
+      width: 250px;
+      top: 26%;
+      left: 60%;
+      transform: rotate(39deg);
+    }
+    :global(.feat-leaf2) {
+      width: 250px;
+      transform: rotate(-32deg);
+      top: 61%;
+      left: 6%;
+    }
+    .fairy-box {
+      top: 85%;
+      left: -14%;
+      right: auto;
+    }
+    :global(.feat-fairy-man) {
+      width: 400px;
+    }
+    :global(.feat-fairy-words) {
+      width: 144px;
+      left: 55%;
+      top: 50%;
+    }
+    .deco-num1 {
+      left: 83%;
+    }
+    .deco-num2 {
+      bottom: 52%;
+      left: -6%;
+    }
+    .deco-num3 {
+      top: -36%;
+      left: 80%;
+    }
+    p {
+      font-size: 1.4rem;
+    }
+    :global(.feat-davigobu) {
+      width: 65px;
+    }
+  }
+  @media (max-width: 720px) {
+    .container {
+      --tml: 40px;
+      padding-bottom: 110px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .title-box {
+      font-size: 70px;
+      margin-bottom: 4rem;
+    }
+    .caption-box {
+      margin-bottom: 110px;
+      padding: 0 7% 1.7rem;
+    }
+    h2 {
+      font-size: 1.7rem;
+    }
+    .dt-span {
+      padding: 0.3rem 1.1rem;
+    }
+    dd {
+      font-size: 1.1rem;
+    }
+    .fairy-box {
+      top: 86%;
+      left: -14%;
+    }
+    :global(.feat-fairy-man) {
+      width: 340px;
+    }
+    .deco-num {
+      font-size: 230px;
+    }
+    .deco-num1 {
+      bottom: 49%;
+    }
+    .deco-num2 {
+      bottom: 54%;
+    }
+    .deco-num3 {
+      top: -28%;
+      left: 79%;
+    }
+    :global(.feat-leaf1) {
+      width: 180px;
+      top: 28%;
+      left: 65%;
+    }
+    :global(.feat-leaf2) {
+      width: 200px;
+      top: 61%;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    p:last-of-type {
+      margin-bottom: 1.9rem;
+    }
+    :global(.feat-davigobu) {
+      width: 58px;
+    }
+  }
+  @media (max-width: 580px) {
+    .container {
+      padding-bottom: 90px;
+    }
+    .title-box {
+      font-size: 60px;
+      margin-bottom: 3rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+    }
+    .caption-box {
+      margin-bottom: 110px;
+      padding: 0 7% 2rem;
+    }
+    h2 {
+      font-size: 1.44rem;
+    }
+    dd {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .deco-num1 {
+      left: 76%;
+    }
+    .deco-num3 {
+      top: -36%;
+      left: 75%;
+    }
+    :global(.feat-leaf1) {
+      width: 160px;
+      top: 28%;
+      left: 57%;
+    }
+    :global(.feat-leaf2) {
+      width: 160px;
+      top: 62%;
+    }
+    .fairy-box {
+      top: 89%;
+      left: -19%;
+    }
+    :global(.feat-fairy-man) {
+      width: 278px;
+    }
+    :global(.feat-fairy-words) {
+      top: 53%;
+      left: 53%;
+    }
+    p {
+      margin-top: 7rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    p:last-of-type {
+      margin-bottom: 1.5rem;
+    }
+    .sm-br {
+      display: inline;
+    }
+    :global(.feat-davigobu) {
+      width: 51px;
+    }
+  }
+  @media (max-width: 460px) {
+    :global(.feat-davigobu) {
+      display: none;
+    }
   }
 </style>

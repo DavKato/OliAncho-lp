@@ -83,3 +83,6 @@ p {
 li {
   list-style: none;
 }
+body {
+  font-feature-settings: 'palt';
+}

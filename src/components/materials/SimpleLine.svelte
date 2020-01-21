@@ -22,4 +22,21 @@
   .rotate {
     transform: rotateX(180deg);
   }
+  @media (max-width: 720px) {
+    svg {
+      margin-bottom: -1.5rem;
+      width: 64px;
+    }
+  }
+  @media (max-width: 580px) {
+    svg {
+      width: 50px;
+    }
+  }
+  @media (max-width: 460px) {
+    svg {
+      width: 40px;
+      margin-bottom: -2rem;
+    }
+  }
 </style>

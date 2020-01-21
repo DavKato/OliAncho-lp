@@ -37,7 +37,7 @@
 </script>
 
 <section id="contact">
-  <YellowCircle top="-8%" left="-22%" big></YellowCircle>
+  <YellowCircle contact></YellowCircle>
   <div class="h-box">
     <h1>
       お問い合わせ

@@ -26,7 +26,7 @@
   ]
 </script>
 <section id="price">
-  <YellowCircle top="-20%" left="36%"></YellowCircle>
+  <YellowCircle price></YellowCircle>
   <Image
     src="pc/2x/leaf3.png"
     width="502*2"

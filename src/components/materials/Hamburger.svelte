@@ -14,7 +14,12 @@
     expanded ? ($y1 = 2) : ($y1 = 14)
   }
 </script>
-<svg viewBox="0 0 16 16" on:click aria-label="menu" tabindex="0">
+<svg
+  viewBox="0 0 16 16"
+  on:click|stopPropagation
+  aria-label="menu"
+  tabindex="0"
+>
   <g class="lines">
     <line x1="0" x2="16" y1="2" y2="{$y2}" />
     <line class="line2" x1="0" x2="16" y1="8" y2="8" class:expanded />
