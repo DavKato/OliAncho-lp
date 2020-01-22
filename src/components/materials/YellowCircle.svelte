@@ -53,8 +53,13 @@
   @media (max-width: 580px) {
     .comp {
       top: -16%;
-      width: 980px;
-      height: 980px;
+      width: 970px;
+      height: 970px;
+    }
+  }
+  @media (max-width: 460px) {
+    .comp {
+      top: -19%;
     }
   }
 </style>

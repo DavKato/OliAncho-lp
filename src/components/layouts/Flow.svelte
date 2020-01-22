@@ -31,30 +31,33 @@
 
 <section id="flow">
   <!-- Deco -->
-  <Image
-    src="pc/2x/olivetree.png"
-    width="1670*2"
-    alt=""
-    class="flow-tree abs"
-  ></Image>
-  <Image
-    src="pc/2x/leaf3.png"
-    width="501*2"
-    alt=""
-    class="flow-leaf1 abs"
-  ></Image>
-  <Image
-    src="pc/2x/leaf3.png"
-    width="501*2"
-    alt=""
-    class="flow-leaf2 abs"
-  ></Image>
-  <Image
-    src="pc/2x/leaf3.png"
-    width="501*2"
-    alt=""
-    class="flow-leaf3 abs"
-  ></Image>
+  <div class="deco-box">
+    <Image
+      src="pc/2x/olivetree.png"
+      width="1670*2"
+      sizes="(max-width:580px) 1190px, 1670px"
+      alt=""
+      class="flow-tree abs"
+    ></Image>
+    <Image
+      src="pc/2x/leaf3.png"
+      width="501*2"
+      alt=""
+      class="flow-leaf1 abs"
+    ></Image>
+    <Image
+      src="pc/2x/leaf3.png"
+      width="501*2"
+      alt=""
+      class="flow-leaf2 abs"
+    ></Image>
+    <Image
+      src="pc/2x/leaf3.png"
+      width="501*2"
+      alt=""
+      class="flow-leaf3 abs"
+    ></Image>
+  </div>
   <!-- /Deco -->
 
   <div class="container">
@@ -104,15 +107,16 @@
     position: absolute;
     bottom: -204%;
     right: 7.5%;
-    width: 376px;
+    width: 9.4em;
   }
   dl {
-    margin-top: 5rem;
+    margin-top: 5em;
+    font-size: 1rem;
   }
   .list-container {
     background-color: rgba(245, 244, 242, 0.8);
     box-shadow: 5px 5px 6px var(--shadow);
-    padding: 1.7rem 0 1rem 10%;
+    padding: 1.7rem 0 1rem 5.4rem;
     position: relative;
     margin-bottom: 2.8rem;
   }
@@ -140,51 +144,174 @@
     left: 0;
     transform: translate(-50%, -50%);
     box-shadow: 3px 3px 6px var(--shadow);
+    font-weight: 700;
   }
   .step-step {
-    font-size: 1.875rem;
+    font-size: 1.8em;
   }
   .step-num {
-    font-size: 3.75rem;
+    font-size: 3.7em;
   }
   dt {
     font-weight: 700;
-    font-size: 1.875rem;
+    font-size: 1.875em;
     border-bottom: 3px solid var(--wine);
     display: inline-block;
-    padding: 0 1rem 0 4rem;
+    padding: 0 1em 0 4rem;
     margin-left: -4rem;
   }
   dd {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     margin: 0.5rem 0 0;
-    white-space: pre;
+    white-space: pre-wrap;
     line-height: 1.9;
   }
 
+  .deco-box {
+    font-size: 100px;
+  }
   :global(.flow-tree) {
     left: 0;
     bottom: 0;
     transform: translateX(-45%);
+    width: 16.7em;
   }
   :global(.flow-leaf1) {
-    width: 472px;
+    width: 4.7em;
     top: -25%;
     right: -5%;
     transform: rotate(-48deg);
     filter: drop-shadow(-1px 5px 3px var(--shadow));
   }
   :global(.flow-leaf2) {
-    width: 438px;
+    width: 4.4em;
     top: 63%;
     right: -3%;
     filter: drop-shadow(11px 5px 3px var(--shadow));
   }
   :global(.flow-leaf3) {
-    width: 456px;
+    width: 4.6em;
     top: 0;
     left: -6%;
     transform: rotate(129deg);
     filter: drop-shadow(2px -5px 3px var(--shadow));
+  }
+
+  @media (max-width: 1000px) {
+    .container {
+      width: 75%;
+    }
+    .deco-box {
+      font-size: 87px;
+    }
+  }
+  @media (max-width: 890px) {
+    section {
+      margin-top: 7rem;
+    }
+    .container {
+      width: 86%;
+    }
+    h1 {
+      margin-left: 8rem;
+      font-size: 2.2rem;
+    }
+    dl {
+      font-size: 0.92rem;
+    }
+    .list-container {
+      padding-left: 4.5rem;
+    }
+    .deco-box {
+      font-size: 78px;
+    }
+    :global(.flow-leaf1) {
+      top: 4%;
+      right: -3%;
+      transform: rotate(-38deg);
+    }
+    :global(.flow-leaf2) {
+      top: 83%;
+      right: 3%;
+    }
+    :global(.flow-leaf3) {
+      top: 36%;
+      left: -10%;
+      transform: rotate(-155deg);
+    }
+  }
+  @media (max-width: 720px) {
+    section {
+      margin-top: 5rem;
+    }
+    .container {
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.9rem;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    dl {
+      font-size: 0.9rem;
+    }
+    .list-container {
+      padding: 1rem 16px 1rem 90px;
+    }
+    .step-box {
+      width: 9.8rem;
+      height: 10.1rem;
+      align-items: flex-start;
+    }
+    .step-span {
+      margin-left: 53%;
+    }
+    .step-num {
+      font-weight: 500;
+    }
+    .step-step {
+      font-size: 1.6em;
+    }
+    .list-container:nth-child(4) > dd {
+      white-space: normal;
+    }
+    .deco-box {
+      font-size: 70px;
+    }
+  }
+  @media (max-width: 580px) {
+    section {
+      margin-top: 1rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+    }
+    dl {
+      font-size: 0.83rem;
+    }
+    .list-container:last-child > dd {
+      white-space: normal;
+    }
+    dt {
+      font-size: 1.7em;
+      line-height: 1.5;
+    }
+    .deco-box {
+      font-size: 65px;
+    }
+    :global(.flow-tree) {
+      bottom: 10%;
+      width: 18.3em;
+      transform: translateX(-52%);
+    }
+  }
+  @media (max-width: 460px) {
+    h1 {
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+    dl {
+      font-size: 0.71rem;
+    }
   }
 </style>
