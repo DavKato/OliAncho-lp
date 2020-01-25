@@ -4,24 +4,24 @@
 
   const list = [
     {
-      title: 'ダミーテキスト',
-      price: '10,000円',
+      title: 'シンプルプラン',
+      price: '100,000円',
+    },
+    {
+      title: 'フリースタイルプラン',
+      price: '300,000円',
     },
     {
       title: 'ダミーテキスト',
-      price: '10,000円',
+      price: '100,000円',
     },
     {
       title: 'ダミーテキスト',
-      price: '10,000円',
+      price: '100,000円',
     },
     {
       title: 'ダミーテキスト',
-      price: '10,000円',
-    },
-    {
-      title: 'ダミーテキスト',
-      price: '10,000円',
+      price: '100,000円',
     },
   ]
 </script>
@@ -53,7 +53,12 @@
         <dt>{item.title}</dt>
         <dd class:runner="{i === 0}">
           {item.price} {#if i === 0}
-          <Image src="pc/2x/spider.thread.price.png" width="1303*2" alt="" class="price-spider abs d-shadow" />
+          <Image
+            src="pc/2x/spider.thread.price.png"
+            width="1303*2"
+            alt=""
+            class="price-spider abs d-shadow"
+          ></Image>
           {/if}
         </dd>
       </div>
@@ -83,12 +88,12 @@
   }
   :global(.price-line) {
     position: absolute;
-    width: 20rem;
+    width: 8em;
     bottom: -190%;
     right: -81%;
   }
   dl {
-    margin-top: 5rem;
+    margin-top: 6rem;
   }
   .list-container {
     display: flex;
@@ -136,5 +141,60 @@
     right: 72.5%;
     transform: rotate(155deg);
     filter: drop-shadow(-4px -4px 3px var(--shadow));
+  }
+  @media (max-width: 1150px) {
+    dd {
+      font-size: 2.8rem;
+    }
+  }
+  @media (max-width: 1000px) {
+    dt {
+      font-size: 1.8rem;
+    }
+    dd {
+      font-size: 2.7rem;
+      padding: 1rem 4rem 0.5rem;
+      margin-left: 1.6rem;
+    }
+  }
+  @media (max-width: 890px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    dl {
+    }
+    .list-container {
+      background-color: #fff;
+      box-shadow: 5px 5px 6px var(--shadow);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 26px 14px 22px;
+      position: relative;
+      margin-bottom: 60px;
+    }
+    dd {
+      margin: 0.5rem 0 0;
+      padding: 0;
+      box-shadow: none;
+      align-self: flex-end;
+    }
+    .runner {
+      position: static;
+    }
+  }
+  @media (max-width: 720px) {
+    h1 {
+      font-size: 1.9rem;
+    }
+  }
+  @media (max-width: 580px) {
+    h1 {
+      font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 460px) {
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 </style>

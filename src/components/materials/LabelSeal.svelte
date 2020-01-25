@@ -19,6 +19,8 @@
     position: absolute;
     width: 100vw;
     height: 100%;
+    left: 0;
+    top: 0;
   }
   .label {
     position: absolute;
@@ -42,5 +44,19 @@
   .rotate {
     transform: rotate(90deg);
     height: 100vw;
+  }
+  @media (max-width: 890px) {
+    div {
+      width: 200%;
+      left: -40%;
+    }
+    .rotate {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .label {
+      font-size: 2rem;
+    }
   }
 </style>

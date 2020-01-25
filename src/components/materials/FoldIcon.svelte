@@ -3,7 +3,7 @@
   export let toggled = false
 </script>
 
-<svg width="24" height="20" viewBox="0 0 24 20">
+<svg viewBox="0 0 24 20">
   {#if toggled}
   <line
     transition:scale="{{opacity: 1, duration: 150}}"
@@ -34,7 +34,6 @@
     margin-left: auto;
     margin-right: 25px;
     width: 25px;
-    height: 20px;
     overflow: visible;
   }
   line {
@@ -45,5 +44,20 @@
   line,
   polygon {
     transform-origin: center;
+  }
+  @media (max-width: 890px) {
+    svg {
+      width: 20px;
+    }
+  }
+  @media (max-width: 720px) {
+    svg {
+      width: 16px;
+    }
+  }
+  @media (max-width: 580px) {
+    svg {
+      margin-right: 15px;
+    }
   }
 </style>

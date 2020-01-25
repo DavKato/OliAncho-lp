@@ -207,7 +207,7 @@
   }
   @media (max-width: 890px) {
     section {
-      margin-top: 7rem;
+      margin-top: 5rem;
     }
     .container {
       width: 86%;
@@ -242,7 +242,7 @@
   }
   @media (max-width: 720px) {
     section {
-      margin-top: 5rem;
+      margin-top: 3rem;
     }
     .container {
       width: 100%;

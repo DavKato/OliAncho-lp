@@ -42,6 +42,10 @@
       width: 1400px;
       height: 1400px;
     }
+    .price {
+      top: -14%;
+      left: 25%;
+    }
   }
   @media (max-width: 720px) {
     .comp {

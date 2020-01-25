@@ -182,7 +182,6 @@
     .spider-box {
       width: 16rem;
       margin-right: 1.4rem;
-      margin-bottom: 1.6rem;
     }
     .spider-text {
       font-size: 1.6rem;

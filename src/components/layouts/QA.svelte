@@ -20,7 +20,6 @@
 </section>
 
 <style>
-  /* TODO: media query needed around < 900px */
   section {
     margin-top: 3rem;
     min-height: 1300px;
@@ -28,14 +27,16 @@
     position: relative;
     overflow: hidden;
     transform: rotate(-11deg);
+    padding-top: 4rem;
   }
   .container {
-    margin-top: 4rem;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     transform: rotate(11deg);
+    margin-left: -6px;
+    /* margin-top: 4rem; */
   }
   .h-box {
     position: relative;
@@ -52,5 +53,64 @@
     top: 41%;
     transform: translateX(-50%);
     white-space: nowrap;
+  }
+  @media (max-width: 1000px) {
+    section {
+      height: calc(375px + 1120px - (100vw / 5));
+    }
+    h1 {
+      font-size: 2.1rem;
+    }
+    .qa {
+      font-size: 7.3rem;
+    }
+  }
+  @media (max-width: 890px) {
+    section {
+      min-height: auto;
+      overflow: visible;
+      height: calc(375px + 930px - (100vw / 5));
+      padding-top: 3rem;
+    }
+    .container {
+      margin-top: 0;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .qa {
+      font-size: 7rem;
+    }
+  }
+  @media (max-width: 720px) {
+    section {
+      height: calc(375px + 710px - (100vw / 5));
+    }
+    h1 {
+      font-size: 1.6rem;
+    }
+    .qa {
+      font-size: 5.3rem;
+    }
+  }
+  @media (max-width: 580px) {
+    section {
+      padding-top: 3rem;
+      height: calc(375px + 650px - (100vw / 5));
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .qa {
+      font-size: 4.9rem;
+    }
+  }
+  @media (max-width: 460px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+    .qa {
+      font-size: 4.5rem;
+    }
   }
 </style>
