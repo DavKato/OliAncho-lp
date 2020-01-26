@@ -22,7 +22,7 @@
     left: 36%;
   }
   .contact {
-    top: -8%;
+    top: 0;
     left: -22%;
     width: 140vw;
     min-width: 1900px;
@@ -30,15 +30,17 @@
     min-height: 1500px;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1150px) {
     .contact {
-      top: -9%;
       left: -30%;
     }
   }
   @media (max-width: 1000px) {
     .comp {
       right: 27%;
+    }
+    .contact {
+      left: -50%;
     }
   }
   @media (max-width: 890px) {

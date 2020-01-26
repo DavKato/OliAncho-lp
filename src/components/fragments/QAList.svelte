@@ -17,6 +17,11 @@
     expanded = i
   }
 
+  const pressed = i => event => {
+    if (event.key !== 'Enter') return
+    toggle(i)()
+  }
+
   const list = [
     {
       q: '何日で納品可能ですか。',
@@ -59,7 +64,7 @@
 
 <dl>
   {#each list as item, i (item.q)}
-  <div class="list-box" on:click="{toggle(i)}">
+  <div class="list-box" on:click="{toggle(i)}" on:keydown="{pressed(i)}">
     <dt class:dt-expanded="{item.toggled}">
       <img src="img/q{i+1}.png" alt="" class="img-q" />
       <div class="text-qa">{ item.q }</div>
@@ -101,6 +106,10 @@
     font-weight: 700;
     display: flex;
     align-items: center;
+    transition: opacity 0.2s;
+  }
+  dt:hover {
+    opacity: 0.9;
   }
   .dt-expanded {
     border-bottom-left-radius: 0px;

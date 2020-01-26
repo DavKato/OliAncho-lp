@@ -105,7 +105,7 @@
     わたしたちは<br class="sm-br" />WEBクリエイターとして夫婦で活動しています。
   </p>
   <p>いつでもお気軽にお問い合わせください :)</p>
-  <a href="#contact">
+  <a href="#contact" class="feat-btn">
     <Btn text="ご依頼・ご相談はこちらから" feat m0a postLine>
       <Image
         src="pc/2x/davigobu.small.png"
@@ -121,6 +121,7 @@
   section {
     width: 100%;
     margin-top: 4.4rem;
+    position: relative;
   }
   .container {
     position: relative;
@@ -245,6 +246,10 @@
     margin: 0;
     font-size: 1.25rem;
     line-height: 2;
+  }
+  :global(.feat-btn:focus) {
+    outline: none;
+    --hoveredCol: #6c97e6;
   }
 
   p {

@@ -12,7 +12,7 @@
         src="pc/2x/instagram.png"
         width="50*2"
         alt="Instagramへ"
-        class="bottoms-link d-shadow"
+        class="bottoms-link d-shadow skl"
       ></Image>
     </a>
 
@@ -25,7 +25,7 @@
         src="pc/2x/youtube.png"
         width="50*2"
         alt="Youtubeチャンネルへ"
-        class="bottoms-link d-shadow"
+        class="bottoms-link d-shadow skl"
       ></Image>
     </a>
 
@@ -38,7 +38,7 @@
         src="pc/2x/twitter.png"
         width="50*2"
         alt="Twitterへ"
-        class="bottoms-link"
+        class="bottoms-link skl"
       ></Image>
     </a>
   </div>
@@ -72,7 +72,7 @@
     align-items: center;
     background-color: #fff;
     padding-top: 60px;
-    margin-top: 70px;
+    overflow-y: hidden;
   }
   :global(.bottoms-link) {
     width: 50px;
@@ -113,11 +113,6 @@
     margin-top: -28px;
     color: #fff;
     background-color: var(--wine);
-  }
-  @media (max-width: 890px) {
-    footer {
-      padding-top: 0;
-    }
   }
   @media (max-width: 460px) {
     .balloon-box {

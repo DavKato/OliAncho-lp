@@ -36,16 +36,14 @@
     --noto: 'Noto Sans', Roboto, sans-serif;
     --gothic: YuGothic, '游ゴシック体', 'Yu Gothic', Roboto, sans-serif;
     --times: 'Times New Roman', Times, serif;
+    /* others */
+    --skl: 7deg;
+    --skr: -4deg;
   }
-  html {
+  #sapper {
     font-family: var(--gothic);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  body {
-    min-height: 100vh;
-  }
-  #sapper {
     overflow: hidden;
   }
   .d-shadow {
@@ -56,5 +54,16 @@
   }
   .abs {
     position: absolute;
+  }
+
+  .skl,
+  .skr {
+    transition: transform 0.2s;
+  }
+  .skl:hover {
+    transform: skew(var(--skl)) scale(1.04);
+  }
+  .skr:hover {
+    transform: skew(var(--skr)) scale(1.01);
   }
 </style>

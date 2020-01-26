@@ -7,15 +7,37 @@
     cont = false,
     postLine = false
 </script>
-<button class:m0a class:feat class:cont {disabled} {type}>
-  <slot></slot>
-  <span>{ text }</span>
-  <Image
-    src="pc/2x/callout.button.png"
-    width="98*2"
-    alt=""
-    class="btn-cto"
-  ></Image>
+<div class:flip="{type !== 'submit'}">
+  {#if feat}
+  <button class:m0a class="feat back" tabindex="-1" aria-hidden="true">
+    <slot></slot>
+    <span>{ text }</span>
+    <Image
+      src="pc/2x/callout.button.png"
+      width="98*2"
+      alt=""
+      class="btn-cto"
+    ></Image>
+  </button>
+  {/if}
+  <button
+    class:m0a
+    class:feat
+    class:cont
+    {disabled}
+    {type}
+    class="front"
+    tabindex="{type === 'submit' ? '0' : '-1'}"
+  >
+    <slot></slot>
+    <span>{ text }</span>
+    <Image
+      src="pc/2x/callout.button.png"
+      width="98*2"
+      alt=""
+      class="btn-cto"
+    ></Image>
+  </button>
   {#if postLine}
   <Image
     src="pc/2x/line.button.png"
@@ -24,18 +46,52 @@
     class="btn-deco"
   ></Image>
   {/if}
-</button>
+</div>
 
 <style>
+  .flip {
+    position: relative;
+    perspective: 800px;
+  }
+  .flip:hover .front {
+    transform: rotateX(180deg);
+    box-shadow: none;
+  }
+  .flip:hover .back {
+    transform: rotateX(0deg) translateX(-50%);
+    box-shadow: 5px 5px 6px var(--shadow);
+  }
   button {
     background-color: var(--wine);
     border-radius: 50px;
     display: flex;
     align-items: center;
     padding: 0 1rem 0 2rem;
-    box-shadow: 5px 5px 6px var(--shadow);
-    position: relative;
     cursor: pointer;
+  }
+  .feat {
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    outline: solid var(--hoveredCol, transparent) 3px;
+    outline-offset: 10px;
+  }
+  .front {
+    position: relative;
+    box-shadow: 5px 5px 6px var(--shadow);
+  }
+  .back {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: rotateX(-180deg) translateX(-50%);
+  }
+  [type='submit'] {
+    transition: transform 0.2s;
+  }
+  [type='submit']:focus,
+  [type='submit']:hover {
+    outline: none;
+    transform: scale(1.05);
   }
   span {
     color: #fff;
@@ -43,7 +99,7 @@
     font-weight: 700;
     padding: 1.23rem 0;
   }
-  :global(.btn-cto) {
+  .btn-cto {
     width: 98px;
     margin-top: -1.6rem;
   }
@@ -54,16 +110,27 @@
     background-color: #968b88;
     cursor: initial;
   }
-  :global(.btn-deco) {
+  [disabled]:hover {
+    transform: none;
+  }
+  .btn-deco {
     position: absolute;
-    left: 105%;
+    right: 13%;
     top: -34%;
     width: 142px;
   }
 
+  @media (max-width: 1150px) {
+    .btn-deco {
+      right: 10%;
+    }
+  }
   @media (max-width: 1000px) {
     span {
       font-size: 1.7rem;
+    }
+    .btn-deco {
+      right: 7%;
     }
   }
   @media (max-width: 890px) {
@@ -77,10 +144,10 @@
       font-size: 1.5rem;
       padding: 0;
     }
-    :global(.btn-cto) {
+    .btn-cto {
       width: 85px;
     }
-    :global(.btn-deco) {
+    .btn-deco {
       display: none;
     }
   }
@@ -94,7 +161,7 @@
     .feat span {
       font-size: 1.3rem;
     }
-    :global(.btn-cto) {
+    .btn-cto {
       width: 73px;
     }
   }

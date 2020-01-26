@@ -110,7 +110,10 @@
 <style>
   section {
     position: relative;
-    margin-top: -1rem;
+    margin-top: -95px;
+    overflow-y: hidden;
+    padding-bottom: 70px;
+    padding-top: 70px;
   }
   .h-box {
     position: relative;
@@ -215,7 +218,8 @@
     section {
       background-image: url('/svg/waveback.svg');
       background-size: 100%;
-      padding-top: 9rem;
+      padding-top: 144px;
+      padding-bottom: 64px;
       margin-top: -64px;
     }
     .h-box {
@@ -232,7 +236,6 @@
     }
     form {
       left: unset;
-      padding-bottom: 64px;
     }
     input,
     textarea {
@@ -256,7 +259,7 @@
   }
   @media (max-width: 720px) {
     section {
-      padding-top: 7rem;
+      padding-top: 112px;
     }
     h1 {
       font-size: 1.8rem;
@@ -292,7 +295,8 @@
   @media (max-width: 580px) {
     section {
       margin-top: -44px;
-      padding-top: 5rem;
+      padding-top: 80px;
+      padding-bottom: 48px;
     }
     h1 {
       font-size: 1.5rem;
@@ -306,7 +310,10 @@
       margin-top: 3rem;
     }
     form {
-      padding-bottom: 48px;
+      margin-top: 1rem;
+    }
+    li {
+      margin-bottom: 19px;
     }
     li:last-child {
       margin-top: 14px;
@@ -322,7 +329,8 @@
     }
     label {
       font-size: 1.4rem;
-      margin-right: 15px;
+      margin-right: 12px;
+      margin-top: 4px;
     }
     li:focus-within:after {
       content: none;

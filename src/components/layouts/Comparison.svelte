@@ -89,7 +89,7 @@
   .h2-box {
     position: relative;
     transform: rotate(-16deg);
-    margin-right: 1.4rem;
+    margin-right: 3rem;
     margin-top: -2rem;
   }
   h2 {
@@ -177,7 +177,7 @@
       margin-right: -3rem;
     }
     .h2-box {
-      margin-right: 2.3rem;
+      margin-right: 4rem;
     }
     h2 {
       font-size: 1.8rem;

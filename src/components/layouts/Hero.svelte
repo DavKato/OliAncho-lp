@@ -46,7 +46,7 @@
     </h2>
     <div class="spider-container">
       {#each spiders as spider}
-      <div class="spider-box">
+      <div class="spider-box skr">
         <p class="spider-text">{spider.text}</p>
         <Image
           src="pc/2x/spider.thread.top.png"
@@ -66,7 +66,6 @@
   h2 {
     font-family: var(--noto);
   }
-
   header {
     display: flex;
     align-items: flex-end;
@@ -169,6 +168,10 @@
     width: 54px;
     transform: translateX(-50%);
     z-index: 1;
+    transition: transform 0.4s;
+  }
+  :global(.skr:hover .hero-spider) {
+    transform: translateX(-134%) skew(4deg);
   }
 
   @media (max-width: 1150px) {

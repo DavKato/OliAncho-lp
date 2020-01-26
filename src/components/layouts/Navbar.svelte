@@ -32,7 +32,7 @@
 
 <nav class:noshadow="{expanded}">
   <div class="wrap">
-    <a href="#hero"> <h1>OliAncho</h1></a>
+    <a href="#hero"> <h1 class="skl">OliAncho</h1></a>
     <div class="sp-menu">
       <a href="#contact"
         ><Image
@@ -49,7 +49,10 @@
     <ul class="ul-main">
       {#each list as item}
       <li class="li-main">
-        <a href="#{item.id}" class="nav-link">{item.name}</a>
+        <a href="#{item.id}" class="nav-link"
+          ><span class="back">{item.name}</span
+          ><span class="front">{item.name}</span></a
+        >
       </li>
       {/each}
     </ul>
@@ -95,7 +98,7 @@
       </li>
     </ul>
   </div>
-  <a href="#contact" class="contact-link">
+  <a href="#contact" class="contact-link skl">
     <Image
       src="pc/2x/callout.header.png"
       width="83*2"
@@ -132,6 +135,9 @@
     font-size: 2.6rem;
     margin-left: 1.5rem;
   }
+  .sp-list {
+    height: 100%;
+  }
   ul {
     padding: 0;
   }
@@ -147,11 +153,29 @@
     white-space: nowrap;
   }
   .nav-link {
+    position: relative;
     font-size: 1.125rem;
     height: 100%;
     display: flex;
     align-items: center;
     padding: 0 1rem;
+    perspective: 100rem;
+  }
+  .nav-link:hover .front {
+    transform: rotateX(180deg);
+  }
+  .nav-link:hover .back {
+    transform: translate(-50%, -50%) rotateX(0deg);
+  }
+  span {
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+  }
+  .back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(-180deg);
   }
   .contact-link {
     display: flex;
@@ -233,6 +257,7 @@
     .sp-list {
       background-color: rgba(130, 38, 18, 0.9);
       width: 100%;
+      height: auto;
       transform: scaleY(0);
       transform-origin: top;
       transition: transform 0.3s;
