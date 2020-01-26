@@ -31,6 +31,12 @@
   }
 
   @media (max-width: 1000px) {
+    .contact {
+      top: -9%;
+      left: -30%;
+    }
+  }
+  @media (max-width: 1000px) {
     .comp {
       right: 27%;
     }
@@ -45,6 +51,9 @@
     .price {
       top: -14%;
       left: 25%;
+    }
+    .contact {
+      display: none;
     }
   }
   @media (max-width: 720px) {

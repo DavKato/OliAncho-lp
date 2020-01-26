@@ -69,7 +69,7 @@
     section {
       min-height: auto;
       overflow: visible;
-      height: calc(375px + 930px - (100vw / 5));
+      height: calc(375px + 910px - (100vw / 5));
       padding-top: 3rem;
     }
     .container {
@@ -84,7 +84,7 @@
   }
   @media (max-width: 720px) {
     section {
-      height: calc(375px + 710px - (100vw / 5));
+      height: calc(375px + 680px - (100vw / 5));
     }
     h1 {
       font-size: 1.6rem;
@@ -96,7 +96,7 @@
   @media (max-width: 580px) {
     section {
       padding-top: 3rem;
-      height: calc(375px + 650px - (100vw / 5));
+      height: calc(375px + 620px - (100vw / 5));
     }
     h1 {
       font-size: 1.5rem;

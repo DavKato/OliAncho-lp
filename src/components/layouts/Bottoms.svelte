@@ -107,10 +107,30 @@
   }
   .copy-right {
     width: 100%;
+    font-size: 0.7rem;
     text-align: center;
     padding: 0.2rem 0;
     margin-top: -28px;
     color: #fff;
     background-color: var(--wine);
+  }
+  @media (max-width: 890px) {
+    footer {
+      padding-top: 0;
+    }
+  }
+  @media (max-width: 460px) {
+    .balloon-box {
+      top: 5px;
+      left: 94%;
+    }
+    .copy-right {
+      padding: 2px 0;
+    }
+  }
+  @media (max-width: 390px) {
+    .davigobu-box {
+      left: calc(-390px + 100vw);
+    }
   }
 </style>

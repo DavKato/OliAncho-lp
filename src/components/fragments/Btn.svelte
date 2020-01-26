@@ -3,9 +3,11 @@
     type = '',
     disabled = false,
     m0a = false,
+    feat = false,
+    cont = false,
     postLine = false
 </script>
-<button class:m0a {disabled} {type}>
+<button class:m0a class:feat class:cont {disabled} {type}>
   <slot></slot>
   <span>{ text }</span>
   <Image
@@ -65,7 +67,13 @@
     }
   }
   @media (max-width: 890px) {
-    span {
+    .cont {
+      padding: 0 1.4rem 0 3.2rem;
+    }
+    .cont span {
+      padding: 0.9rem 0;
+    }
+    .feat span {
       font-size: 1.5rem;
       padding: 0;
     }
@@ -77,10 +85,13 @@
     }
   }
   @media (max-width: 720px) {
-    button {
+    .feat {
       padding: 0 0.4rem 0px 1rem;
     }
-    span {
+    .cont {
+      padding: 0 0.8rem 0 2.5rem;
+    }
+    .feat span {
       font-size: 1.3rem;
     }
     :global(.btn-cto) {
@@ -88,13 +99,21 @@
     }
   }
   @media (max-width: 580px) {
-    span {
+    .feat span {
       font-size: 1.2rem;
+    }
+    .cont span {
+      font-size: 1.4rem;
+      padding: 0.6rem 0;
     }
   }
   @media (max-width: 460px) {
-    span {
+    .feat span {
       padding: 0.9rem 0;
+    }
+    .cont span {
+      font-size: 1.4rem;
+      padding: 0.6rem 0;
     }
   }
 </style>

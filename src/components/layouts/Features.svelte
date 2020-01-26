@@ -106,7 +106,7 @@
   </p>
   <p>いつでもお気軽にお問い合わせください :)</p>
   <a href="#contact">
-    <Btn text="ご依頼・ご相談はこちらから" m0a postLine>
+    <Btn text="ご依頼・ご相談はこちらから" feat m0a postLine>
       <Image
         src="pc/2x/davigobu.small.png"
         width="74*2"

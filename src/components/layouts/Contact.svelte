@@ -90,7 +90,6 @@
         <textarea
           name="message"
           id="message"
-          rows="11"
           bind:value="{message}"
           class:invalid="{ !isValid.message }"
         ></textarea>
@@ -100,6 +99,7 @@
         <Btn
           text="送信する"
           type="submit"
+          cont
           disabled="{!validInput || dummy}"
         ></Btn>
       </li>
@@ -128,7 +128,7 @@
   }
   :global(.contact-line) {
     position: absolute;
-    width: 17.1rem;
+    width: 7.7em;
     bottom: -182%;
     right: 4%;
   }
@@ -168,6 +168,7 @@
     margin: 10px 0 0 9.8rem;
   }
   label {
+    margin-top: 8px;
     margin-right: 34px;
     font-size: 2.2rem;
   }
@@ -180,19 +181,179 @@
   }
   textarea {
     resize: none;
+    height: 24rem;
   }
   input:focus,
   textarea:focus {
     outline: solid 2px var(--wine);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
   }
   li:focus-within:after {
-    content: url('../svg/left-arrow.svg');
+    content: url('/svg/left-arrow.svg');
     width: 34px;
-    height: 39px;
     position: absolute;
     right: -50px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-47%);
     filter: drop-shadow(0, 5px, 6px, var(--d-shadow));
+  }
+  @media (max-width: 1150px) {
+    .h-box {
+      left: 12%;
+    }
+  }
+  @media (max-width: 1000px) {
+    .title-p {
+      margin-left: 2rem;
+    }
+    li:focus-within:after {
+      width: 29px;
+      right: -45px;
+    }
+  }
+  @media (max-width: 890px) {
+    section {
+      background-image: url('/svg/waveback.svg');
+      background-size: 100%;
+      padding-top: 9rem;
+      margin-top: -64px;
+    }
+    .h-box {
+      width: 82%;
+      left: unset;
+      text-align: center;
+    }
+    h1 {
+      margin-left: 4rem;
+      font-size: 2rem;
+    }
+    .title-p {
+      margin-left: 0;
+    }
+    form {
+      left: unset;
+      padding-bottom: 64px;
+    }
+    input,
+    textarea {
+      font-size: 1.4rem;
+      width: 59vw;
+    }
+    textarea {
+      height: 18rem;
+    }
+    label {
+      font-size: 1.9rem;
+      margin-right: 27px;
+    }
+    li:last-child {
+      margin-left: 0;
+    }
+    li:focus-within:after {
+      width: 24px;
+      right: -40px;
+    }
+  }
+  @media (max-width: 720px) {
+    section {
+      padding-top: 7rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-left: 2rem;
+    }
+    .title-p {
+      font-size: 1.2rem;
+      margin-top: 4rem;
+    }
+    li {
+      margin-bottom: 24px;
+    }
+    li:last-child {
+      margin-top: 25px;
+    }
+    input,
+    textarea {
+      width: 67vw;
+      font-size: 1.3rem;
+    }
+    textarea {
+      height: 16rem;
+    }
+    label {
+      font-size: 1.6rem;
+      margin-right: 19px;
+    }
+    li:focus-within:after {
+      width: 18px;
+      right: -25px;
+    }
+  }
+  @media (max-width: 580px) {
+    section {
+      margin-top: -44px;
+      padding-top: 5rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-left: 0;
+    }
+    .h-box {
+      width: 87%;
+    }
+    .title-p {
+      text-align: left;
+      margin-top: 3rem;
+    }
+    form {
+      padding-bottom: 48px;
+    }
+    li:last-child {
+      margin-top: 14px;
+    }
+    input,
+    textarea {
+      width: 73vw;
+      font-size: 1.2rem;
+      padding: 0.4rem 0.5rem;
+    }
+    textarea {
+      height: 14rem;
+    }
+    label {
+      font-size: 1.4rem;
+      margin-right: 15px;
+    }
+    li:focus-within:after {
+      content: none;
+    }
+  }
+  @media (max-width: 460px) {
+    .h-box {
+      width: 90%;
+    }
+    h1 {
+      font-size: 1.4rem;
+    }
+    .title-p {
+      font-size: 1rem;
+    }
+    form {
+      margin-top: 1rem;
+    }
+    li {
+      margin-bottom: 16px;
+    }
+    li:last-child {
+      margin-left: 30px;
+    }
+    input,
+    textarea {
+      width: 68vw;
+    }
+    label {
+      font-size: 1.2rem;
+      margin-right: 8px;
+    }
   }
 </style>

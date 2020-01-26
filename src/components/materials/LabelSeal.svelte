@@ -53,6 +53,9 @@
     .rotate {
       display: none;
     }
+    .label {
+      font-size: 2.4rem;
+    }
   }
   @media (max-width: 720px) {
     .label {

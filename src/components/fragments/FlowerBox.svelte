@@ -34,7 +34,7 @@
   .deco-container {
     position: absolute;
     left: 14%;
-    bottom: -1rem;
+    bottom: -1.5rem;
   }
   .img-flower {
     height: 57.3rem;
@@ -82,5 +82,26 @@
   }
   .isValid {
     transform: rotateX(0);
+  }
+  @media (max-width: 1150px) {
+    .deco-container {
+      left: 10%;
+    }
+  }
+  @media (max-width: 1000px) {
+  }
+  @media (max-width: 890px) {
+    .deco-container {
+      display: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .deco-container {
+      display: none;
+    }
+  }
+  @media (max-width: 580px) {
+  }
+  @media (max-width: 460px) {
   }
 </style>
