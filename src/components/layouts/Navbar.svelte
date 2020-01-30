@@ -2,6 +2,8 @@
   import Image from 'svelte-i-pack'
   import Hamburger from '../materials/Hamburger.svelte'
 
+  export let inView
+
   const list = [
     {
       id: 'features',
@@ -24,15 +26,25 @@
       name: 'よくある質問',
     },
   ]
-
   let expanded = false
+
+  const handleClick = id => () => {
+    const offset = id === 'hero' || id === 'qa' ? 0 : 80
+    const target = document.getElementById(id)
+    const position = target.offsetTop - offset
+
+    window.scrollTo(0, position)
+    target.focus({ preventScroll: true })
+  }
 </script>
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
 
 <nav class:noshadow="{expanded}">
   <div class="wrap">
-    <a href="#hero"> <h1 class="skl">OliAncho</h1></a>
+    <a href="#hero" on:click|preventDefault="{handleClick('hero')}">
+      <h1 class="skl">OliAncho</h1></a
+    >
     <div class="sp-menu">
       <a href="#contact"
         ><Image
@@ -49,10 +61,14 @@
     <ul class="ul-main">
       {#each list as item}
       <li class="li-main">
-        <a href="#{item.id}" class="nav-link"
+        <a
+          href="#{item.id}"
+          class="nav-link"
+          on:click|preventDefault="{handleClick(item.id)}"
           ><span class="back">{item.name}</span
-          ><span class="front">{item.name}</span></a
-        >
+          ><span class="front">{item.name}</span>
+          <span class="underbar" class:active="{inView === item.id}"></span>
+        </a>
       </li>
       {/each}
     </ul>
@@ -98,7 +114,11 @@
       </li>
     </ul>
   </div>
-  <a href="#contact" class="contact-link skl">
+  <a
+    href="#contact"
+    class="contact-link skl"
+    on:click|preventDefault="{handleClick('contact')}"
+  >
     <Image
       src="pc/2x/callout.header.png"
       width="83*2"
@@ -125,6 +145,7 @@
     align-items: center;
     box-shadow: 0 5px 6px var(--shadow);
     z-index: 100;
+    transition: transform 0.3s;
   }
   a {
     color: white;
@@ -176,6 +197,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotateX(-180deg);
+  }
+  .underbar {
+    height: 2px;
+    background-color: currentColor;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .active {
+    transform: scaleX(1);
   }
   .contact-link {
     display: flex;

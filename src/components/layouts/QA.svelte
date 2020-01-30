@@ -1,9 +1,11 @@
 <script>
   import LabelSeal from '../materials/LabelSeal.svelte'
   import QAList from '../fragments/QAList.svelte'
+
+  export let qa = ''
 </script>
 
-<section id="qa">
+<section id="qa" tabindex="-1" bind:this="{qa}">
   <LabelSeal></LabelSeal>
   <LabelSeal rotate></LabelSeal>
 

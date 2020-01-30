@@ -9,19 +9,39 @@
   import QA from '../components/layouts/QA.svelte'
   import Contact from '../components/layouts/Contact.svelte'
   import Bottoms from '../components/layouts/Bottoms.svelte'
+
+  import { onMount } from 'svelte'
+
+  let inView = ''
+  const cb = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        inView = entry.target.id
+      }
+    })
+  }
+  const observer = process.browser
+    ? new IntersectionObserver(cb, { threshold: 0.1 })
+    : null
+
+  onMount(() => {
+    const sections = document.querySelectorAll('section')
+
+    sections.forEach(el => observer.observe(el))
+  })
 </script>
 
-<Navbar></Navbar>
+<Navbar {inView}></Navbar>
 
 <main>
   <Hero></Hero>
-  <Intro></Intro>
-  <Features></Features>
-  <Comparison></Comparison>
-  <Flow></Flow>
-  <Price></Price>
-  <QA></QA>
-  <Contact></Contact>
+  <Intro inview="{inView === 'intro'}"></Intro>
+  <Features inview="{inView === 'features'}"></Features>
+  <Comparison inview="{inView === 'comparison'}"></Comparison>
+  <Flow inview="{inView === 'flow'}"></Flow>
+  <Price inview="{inView === 'price'}"></Price>
+  <QA inview="{inView === 'qa'}"></QA>
+  <Contact inview="{inView === 'contact'}"></Contact>
 </main>
 <Bottoms></Bottoms>
 <style global>
@@ -39,12 +59,16 @@
     /* others */
     --skl: 7deg;
     --skr: -4deg;
+    scroll-behavior: smooth;
   }
   #sapper {
     font-family: var(--gothic);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+  }
+  section:focus {
+    outline: none;
   }
   .d-shadow {
     filter: drop-shadow(5px 5px 3px var(--shadow));

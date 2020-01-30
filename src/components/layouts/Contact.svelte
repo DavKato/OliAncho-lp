@@ -10,6 +10,7 @@
   import FlowerBox from '../fragments/FlowerBox.svelte'
   import Dot from '../materials/Dot.svelte'
 
+  export let cont = ''
   let name = ''
   let email = ''
   let message = ''
@@ -36,7 +37,7 @@
   }
 </script>
 
-<section id="contact">
+<section id="contact" tabindex="-1" bind:this="{cont}">
   <YellowCircle contact></YellowCircle>
   <div class="h-box">
     <h1>

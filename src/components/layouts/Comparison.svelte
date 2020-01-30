@@ -4,9 +4,16 @@
   import YellowCircle from '../materials/YellowCircle.svelte'
   import SimpleLine from '../materials/SimpleLine.svelte'
   import Dot from '../materials/Dot.svelte'
+
+  export let comp = '',
+    inview
+  let viewed = false
+  $: {
+    if (inview) viewed = true
+  }
 </script>
 
-<section id="comparison">
+<section id="comparison" tabindex="-1" bind:this="{comp}">
   <YellowCircle comp></YellowCircle>
   <Image
     src="pc/2x/leaf.man.png"
@@ -23,7 +30,7 @@
       <SimpleLine x="52" y="55" color="var(--wine)" rotate></SimpleLine>
       <h1>大手サービスとの違い！</h1>
       <SimpleLine x="52" y="55" color="var(--wine)"></SimpleLine>
-      <div class="h2-box">
+      <div class="h2-box" class:viewed>
         <h2>OliAnchoは<br /><Dot sentence="ここ"></Dot>がちがう！</h2>
         <Image
           src="pc/2x/gunya.white.png"
@@ -88,9 +95,13 @@
   }
   .h2-box {
     position: relative;
-    transform: rotate(-16deg);
     margin-right: 3rem;
     margin-top: -2rem;
+    transform: translate3d(-400px, 0, 0);
+    transition: transform 0.4s ease-out;
+  }
+  .viewed {
+    transform: translate3d(0, 0, 0) rotate(-16deg);
   }
   h2 {
     position: relative;

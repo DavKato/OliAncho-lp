@@ -3,6 +3,12 @@
   import DownArrow from '../materials/DownArrow.svelte'
   import SimpleLine from '../materials/SimpleLine.svelte'
 
+  export let inview
+  let viewed = false
+  $: {
+    if (inview) viewed = true
+  }
+
   const list = [
     { text: '誰に何を頼めばいいか', strong: '分からない' },
     { text: 'WEBに疎いから', strong: '不安でいっぱい' },
@@ -10,7 +16,7 @@
   ]
 </script>
 
-<section>
+<section id="intro">
   <div class="title-box">
     <SimpleLine></SimpleLine>
     <h1>
@@ -28,7 +34,7 @@
     </p>
     {/each}
     <DownArrow color="var(--ocher)"></DownArrow>
-    <div class="deco-box">
+    <div class="deco-box" class:viewed>
       <span class="q1">?</span><span class="q2">?</span
       ><span class="q3">?</span>
       <Image
@@ -118,6 +124,11 @@
     width: 836px;
     font-family: var(--times);
     font-size: 1rem;
+    transform: translate3d(400px, 0, 0);
+    transition: transform 1.6s 0.6s ease-out;
+  }
+  .viewed {
+    transform: translate3d(0, 0, 0);
   }
   .q1 {
     position: absolute;

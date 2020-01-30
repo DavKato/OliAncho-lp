@@ -1,5 +1,61 @@
 <script>
   import Image from 'svelte-i-pack'
+
+  export let inview
+  let viewed = false
+  const offset = 700
+  let flow,
+    leaf,
+    top = 0,
+    opacity = 0,
+    left = 0,
+    ry = 0,
+    rz = 0,
+    deg = 0,
+    leafScroll
+
+  if (process.browser) {
+    leaf = document.querySelector('.flow-leaf3')
+    let lastPos = -999
+    leafScroll = () => {
+      let scrollPos = window.scrollY - flow.offsetTop + offset
+
+      if (lastPos > scrollPos) return
+      deg = scrollPos / 3.6
+      top = Math.max(0, scrollPos / 1.3)
+      let left
+      if (top <= 400) {
+        left = -(top / 1.5)
+      } else if (top > 400 && top <= 900) {
+        left = -267 + (top - 400) / 1.1
+      } else if (top > 900) {
+        left = 188 - (top - 900) / 1.4
+      }
+      ry = Math.max(0, scrollPos / 700)
+      rz = Math.max(0, scrollPos / 500)
+      if (opacity < 1) {
+        opacity = Math.min(1, (top - 100) / 800)
+        leaf.style.opacity = opacity
+      }
+      leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`
+
+      lastPos = scrollPos
+    }
+  }
+  $: {
+    if (inview && process.browser) {
+      viewed = true
+      if (window.innerWidth > 1000) {
+        top < 1000 && window.addEventListener('scroll', leafScroll)
+      } else {
+        leaf.style.opacity = 1
+        console.log('!! !! !! !skippete! !! !! !!')
+      }
+    } else if (!inview && process.browser) {
+      window.removeEventListener('scroll', leafScroll)
+    }
+  }
+
   const list = [
     {
       heading: '無料相談・お見積もり',
@@ -29,7 +85,7 @@
   ]
 </script>
 
-<section id="flow">
+<section id="flow" tabindex="-1" bind:this="{flow}">
   <!-- Deco -->
   <div class="deco-box">
     <Image
@@ -51,12 +107,14 @@
       alt=""
       class="flow-leaf2 abs"
     ></Image>
+    <!-- <div> -->
     <Image
       src="pc/2x/leaf3.png"
       width="501*2"
       alt=""
       class="flow-leaf3 abs"
     ></Image>
+    <!-- </div> -->
   </div>
   <!-- /Deco -->
 
@@ -71,7 +129,7 @@
       ></Image>
     </h1>
 
-    <dl>
+    <dl class:viewed>
       {#each list as item, i}
       <div class="list-container">
         <div class="step-box">
@@ -112,6 +170,13 @@
   dl {
     margin-top: 5em;
     font-size: 1rem;
+    transform: translate3d(200px, 0, 0);
+    opacity: 0;
+    transition: transform 0.7s 0.1s ease-out, opacity 0.7s 0.1s ease-out;
+  }
+  .viewed {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
   .list-container {
     background-color: rgba(245, 244, 242, 0.8);
@@ -190,12 +255,35 @@
     filter: drop-shadow(11px 5px 3px var(--shadow));
   }
   :global(.flow-leaf3) {
-    width: 4.6em;
+    width: 4em;
     top: 0;
-    left: -6%;
-    transform: rotate(129deg);
+    left: 6rem;
     filter: drop-shadow(2px -5px 3px var(--shadow));
+    opacity: 0;
+    /* transform: rotate3d(0, 0, 1, 129deg); */
+    /* animation: fall1 1.3s 0.6s ease-out forwards,
+      fall2 1.2s 1.4s ease-in-out forwards; */
+    /* fall3 1.4s ease-in-out 2.2s 1; */
   }
+  /* @keyframes fall1 {
+    25% {
+      transform: translate(-15px, 120px) rotate3d(0, 0.4, 1, 132deg);
+    }
+    100% {
+      transform: translate(-100px, 280px) rotate3d(0, 1.5, 1, 170deg);
+      opacity: 1;
+    }
+  }
+  @keyframes fall2 {
+    25% {
+      transform: translate(-100px, 280px) rotate3d(-1, 2, 1, 180deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100px, 580px) rotate3d(-1, 2, 1, 180deg);
+      opacity: 1;
+    }
+  } */
 
   @media (max-width: 1000px) {
     .container {

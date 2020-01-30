@@ -2,6 +2,8 @@
   import YellowCircle from '../materials/YellowCircle.svelte'
   import Image from 'svelte-i-pack'
 
+  export let price = ''
+
   const list = [
     {
       title: 'シンプルプラン',
@@ -25,11 +27,11 @@
     },
   ]
 </script>
-<section id="price">
+<section id="price" tabindex="-1" bind:this="{price}">
   <YellowCircle price></YellowCircle>
   <Image
     src="pc/2x/leaf3.png"
-    width="502*2"
+    width="501*2"
     alt=""
     class="price-leaf abs"
     no-inline

@@ -28,7 +28,7 @@
       <img src="svg/wine.svg" alt="" class="wine-img" />
       <Image
         src="pc/2x/leaf3.png"
-        width="502*2"
+        width="501*2"
         sizes="160px"
         alt=""
         class="hero-leaf"
