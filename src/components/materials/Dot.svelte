@@ -2,11 +2,12 @@
   import { onMount } from 'svelte'
   export let color = '#842612',
     top = '-3px',
-    sentence
+    sentence,
+    bold = false
 </script>
 
 {#each sentence as text}
-<span style="--color: {color}; --top: {top}">{text}</span>
+<span style="--color: {color}; --top: {top}" class:bold>{text}</span>
 {/each}
 
 <style>
@@ -24,6 +25,9 @@
     line-height: 0;
     display: flex;
     justify-content: center;
+  }
+  .bold {
+    font-weight: 700;
   }
   @media (max-width: 720px) {
     span:after {

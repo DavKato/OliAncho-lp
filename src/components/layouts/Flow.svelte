@@ -22,7 +22,7 @@
 
       if (lastPos > scrollPos) return
       deg = scrollPos / 3.6
-      top = Math.max(0, scrollPos / 1.3)
+      top = Math.max(0, scrollPos / 1.4)
       let left
       if (top <= 400) {
         left = -(top / 1.5)
@@ -39,13 +39,13 @@
       }
       leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`
 
-      lastPos = scrollPos
+      deg < 390 ? (lastPos = scrollPos) : (lastPos = 3000)
     }
   }
   $: {
     if (inview && process.browser) {
       viewed = true
-      if (window.innerWidth > 1000) {
+      if (window.innerWidth > 890) {
         top < 1000 && window.addEventListener('scroll', leafScroll)
       } else {
         leaf.style.opacity = 1
@@ -260,30 +260,7 @@
     left: 6rem;
     filter: drop-shadow(2px -5px 3px var(--shadow));
     opacity: 0;
-    /* transform: rotate3d(0, 0, 1, 129deg); */
-    /* animation: fall1 1.3s 0.6s ease-out forwards,
-      fall2 1.2s 1.4s ease-in-out forwards; */
-    /* fall3 1.4s ease-in-out 2.2s 1; */
   }
-  /* @keyframes fall1 {
-    25% {
-      transform: translate(-15px, 120px) rotate3d(0, 0.4, 1, 132deg);
-    }
-    100% {
-      transform: translate(-100px, 280px) rotate3d(0, 1.5, 1, 170deg);
-      opacity: 1;
-    }
-  }
-  @keyframes fall2 {
-    25% {
-      transform: translate(-100px, 280px) rotate3d(-1, 2, 1, 180deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(100px, 580px) rotate3d(-1, 2, 1, 180deg);
-      opacity: 1;
-    }
-  } */
 
   @media (max-width: 1000px) {
     .container {

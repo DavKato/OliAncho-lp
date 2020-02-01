@@ -37,6 +37,7 @@
           width="316*2"
           alt=""
           class="comp-gunya"
+          no-inline
         ></Image>
       </div>
     </div>
@@ -110,7 +111,7 @@
     line-height: 1.3;
     z-index: 20;
   }
-  .comp-gunya {
+  :global(.comp-gunya) {
     position: absolute;
     top: 51%;
     left: 45%;
@@ -215,7 +216,7 @@
       left: 9%;
       margin-right: 0;
     }
-    .comp-gunya {
+    :global(.comp-gunya) {
       width: 270px;
     }
     .p-container {
@@ -254,7 +255,7 @@
     h2 {
       font-size: 1.4rem;
     }
-    .comp-gunya {
+    :global(.comp-gunya) {
       width: 220px;
     }
     .p-container {
@@ -280,7 +281,7 @@
       font-size: 1.1rem;
       line-height: 1.4;
     }
-    .comp-gunya {
+    :global(.comp-gunya) {
       width: 170px;
     }
     .p-container {

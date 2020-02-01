@@ -1,33 +1,11 @@
 <script>
   import YellowCircle from '../materials/YellowCircle.svelte'
+  import Dot from '../materials/Dot.svelte'
+  import PriceCard from '../fragments/PriceCard.svelte'
+  import cardList from '../../data/priceCardList.js'
   import Image from 'svelte-i-pack'
-
-  export let price = ''
-
-  const list = [
-    {
-      title: 'シンプルプラン',
-      price: '100,000円',
-    },
-    {
-      title: 'フリースタイルプラン',
-      price: '300,000円',
-    },
-    {
-      title: 'ダミーテキスト',
-      price: '100,000円',
-    },
-    {
-      title: 'ダミーテキスト',
-      price: '100,000円',
-    },
-    {
-      title: 'ダミーテキスト',
-      price: '100,000円',
-    },
-  ]
 </script>
-<section id="price" tabindex="-1" bind:this="{price}">
+<section id="price" tabindex="-1">
   <YellowCircle price></YellowCircle>
   <Image
     src="pc/2x/leaf3.png"
@@ -40,32 +18,39 @@
   <img src="svg/spiderweb.svg" alt="" class="web2 abs d-shadow" />
 
   <div class="container">
-    <h1>
-      お値段
-      <Image
-        src="pc/2x/line.contact.png"
-        width="284*2"
-        alt=""
-        class="price-line abs d-shadow"
-      ></Image>
-    </h1>
-    <dl>
-      {#each list as item, i}
-      <div class="list-container">
-        <dt>{item.title}</dt>
-        <dd class:runner="{i === 0}">
-          {item.price} {#if i === 0}
-          <Image
-            src="pc/2x/spider.thread.price.png"
-            width="1303*2"
-            alt=""
-            class="price-spider abs d-shadow"
-          ></Image>
-          {/if}
-        </dd>
+    <div class="head-box">
+      <h1>
+        <Image
+          src="pc/2x/line.contact.png"
+          width="284*2"
+          alt=""
+          class="price-line abs d-shadow"
+          no-inline
+        ></Image>
+        お値段
+      </h1>
+      <div class="campaign">
+        <h4>
+          東京オリンピック<br /><strong>キャンペーン開催中</strong
+          ><br />2020年<Dot sentence="9月" bold top="-5px"></Dot>まで！
+        </h4>
+        <Image
+          src="pc/2x/gunya.white.png"
+          width="316*2"
+          alt=""
+          class="price-gunya"
+          no-inline
+        ></Image>
       </div>
-      {/each}
-    </dl>
+    </div>
+
+    {#each cardList as card}
+    <PriceCard {card}></PriceCard>
+    {/each}
+    <div class="tail">
+      <p>※ホスティング無料</p>
+      <p>※レスポンシブ対応込</p>
+    </div>
   </div>
 </section>
 
@@ -80,6 +65,10 @@
     margin-left: auto;
     position: relative;
   }
+  .head-box {
+    display: flex;
+    width: 100%;
+  }
   h1 {
     position: relative;
     margin-left: 9rem;
@@ -93,34 +82,30 @@
     width: 8em;
     bottom: -190%;
     right: -81%;
+    z-index: 30;
   }
-  dl {
-    margin-top: 6rem;
+  .campaign {
+    position: absolute;
+    top: -7%;
+    left: 46%;
+    transform: rotate(16deg);
   }
-  .list-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 76px;
-  }
-  dt {
-    font-size: 1.875rem;
-    font-weight: 700;
-  }
-  dd {
-    margin-left: 2.2rem;
-    font-size: 3.1rem;
-    padding: 1rem 7rem 0.5rem;
-    background-color: #fff;
-    box-shadow: 5px 5px 6px var(--shadow);
-  }
-  .runner {
+  h4 {
     position: relative;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    z-index: 20;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
   }
-  :global(.price-spider) {
-    bottom: 0;
-    right: 94%;
-    width: 1303px;
-    transform: translateY(40%);
+  :global(.price-gunya) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 316px;
+    transform: translate(-50%, -50%) rotateY(180deg) rotate(12deg);
+    z-index: 10;
   }
 
   .web1 {
@@ -133,70 +118,149 @@
   .web2 {
     width: 512px;
     height: 512px;
-    transform: rotate(32deg);
-    bottom: 6%;
-    right: 73%;
+    transform: rotate(36deg);
+    bottom: 20%;
+    right: 70%;
   }
   :global(.price-leaf) {
-    width: 335px;
-    bottom: 4.5%;
-    right: 72.5%;
-    transform: rotate(155deg);
+    width: 358px;
+    bottom: 18.2%;
+    right: 69%;
+    transform: rotate(156deg);
     filter: drop-shadow(-4px -4px 3px var(--shadow));
   }
+  .tail {
+    display: none;
+  }
   @media (max-width: 1150px) {
-    dd {
-      font-size: 2.8rem;
+    .campaign {
+      left: 55%;
     }
   }
   @media (max-width: 1000px) {
-    dt {
-      font-size: 1.8rem;
+    .campaign {
+      left: 58%;
     }
-    dd {
-      font-size: 2.7rem;
-      padding: 1rem 4rem 0.5rem;
-      margin-left: 1.6rem;
+    .card {
+      margin-right: 7%;
     }
   }
   @media (max-width: 890px) {
+    .container {
+      width: 70%;
+    }
     h1 {
       font-size: 2.2rem;
     }
-    dl {
+    :global(.price-gunya) {
+      width: 270px;
     }
-    .list-container {
-      background-color: #fff;
-      box-shadow: 5px 5px 6px var(--shadow);
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 12px 26px 14px 22px;
-      position: relative;
-      margin-bottom: 60px;
-    }
-    dd {
-      margin: 0.5rem 0 0;
-      padding: 0;
-      box-shadow: none;
-      align-self: flex-end;
-    }
-    .runner {
-      position: static;
+    .container {
+      width: 68%;
     }
   }
   @media (max-width: 720px) {
+    section {
+      margin-top: 11rem;
+    }
     h1 {
       font-size: 1.9rem;
+      margin-left: 4.5rem;
+    }
+    .campaign {
+      top: -5%;
+      left: 54%;
+    }
+    h4 {
+      font-size: 1.1rem;
+    }
+    :global(.price-gunya) {
+      width: 240px;
+    }
+    .web1,
+    .web2 {
+      width: 310px;
+      height: 310px;
+    }
+    .web1 {
+      top: 7%;
+      right: 65%;
+    }
+    .web2 {
+      transform: rotate(34deg);
+      bottom: 26%;
+      right: 70%;
+    }
+    :global(.price-leaf) {
+      width: 290px;
+      bottom: 21%;
+      right: 59%;
+    }
+    .tail {
+      display: block;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      padding-left: 7rem;
+      line-height: 1.6;
+      letter-spacing: 1px;
     }
   }
   @media (max-width: 580px) {
+    section {
+      margin-top: 4rem;
+    }
     h1 {
       font-size: 1.6rem;
     }
+    .campaign {
+      left: 56%;
+    }
+    .container {
+      width: 73%;
+    }
+    h4 {
+      font-size: 0.875rem;
+    }
+    :global(.price-gunya) {
+      width: 170px;
+    }
+    .web1,
+    .web2 {
+      width: 240px;
+      height: 240px;
+    }
+    .web1 {
+      top: 8.5%;
+      right: 63%;
+    }
+    .web2 {
+      bottom: 33%;
+      right: 67%;
+    }
+    :global(.price-leaf) {
+      width: 210px;
+      bottom: 29%;
+      right: 58%;
+    }
+    .tail {
+      padding-left: 5rem;
+    }
   }
   @media (max-width: 460px) {
+    .container {
+      width: 85%;
+    }
     h1 {
+      margin-left: 5.5rem;
       font-size: 1.5rem;
+    }
+    .campaign {
+      left: 58%;
+    }
+    .tail {
+      padding-left: 0;
+      margin: 3rem 4rem 0 auto;
+      width: 10rem;
     }
   }
 </style>

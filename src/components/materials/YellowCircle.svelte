@@ -18,7 +18,7 @@
     right: 30%;
   }
   .price {
-    top: -20%;
+    top: -18%;
     left: 36%;
   }
   .contact {
@@ -31,6 +31,10 @@
   }
 
   @media (max-width: 1150px) {
+    .price {
+      top: -9%;
+      left: 30%;
+    }
     .contact {
       left: -30%;
     }
@@ -38,6 +42,9 @@
   @media (max-width: 1000px) {
     .comp {
       right: 27%;
+    }
+    .price {
+      left: 25%;
     }
     .contact {
       left: -50%;
@@ -59,10 +66,17 @@
     }
   }
   @media (max-width: 720px) {
+    .comp,
+    .price {
+      width: 1000px;
+      height: 1000px;
+    }
     .comp {
       top: -21%;
-      width: 1100px;
-      height: 1100px;
+    }
+    .price {
+      top: -13%;
+      left: 23%;
     }
   }
   @media (max-width: 580px) {
@@ -70,6 +84,12 @@
       top: -16%;
       width: 970px;
       height: 970px;
+    }
+    .price {
+      width: 870px;
+      height: 870px;
+      top: -9%;
+      left: 20%;
     }
   }
   @media (max-width: 460px) {

@@ -9,6 +9,7 @@
   import Btn from '../fragments/Btn.svelte'
   import FlowerBox from '../fragments/FlowerBox.svelte'
   import Dot from '../materials/Dot.svelte'
+  import Image from 'svelte-i-pack'
 
   export let cont = ''
   let name = ''
@@ -44,8 +45,10 @@
       お問い合わせ
       <Image
         src="pc/2x/line.contact.png"
+        width="284*2"
         alt=""
         class="contact-line d-shadow-light"
+        no-inline
       ></Image>
     </h1>
     <p class="title-p">

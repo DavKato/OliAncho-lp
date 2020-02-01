@@ -23,7 +23,7 @@
 
 <style>
   section {
-    margin-top: 3rem;
+    margin-top: -147px;
     min-height: 1300px;
     height: calc(375px + 1250px - (100vw / 5));
     position: relative;
@@ -38,7 +38,6 @@
     align-items: center;
     transform: rotate(11deg);
     margin-left: -6px;
-    /* margin-top: 4rem; */
   }
   .h-box {
     position: relative;
@@ -55,6 +54,11 @@
     top: 41%;
     transform: translateX(-50%);
     white-space: nowrap;
+  }
+  @media (max-width: 1150px) {
+    section {
+      margin-top: -110px;
+    }
   }
   @media (max-width: 1000px) {
     section {
@@ -73,6 +77,7 @@
       overflow: visible;
       height: calc(375px + 910px - (100vw / 5));
       padding-top: 3rem;
+      margin-top: -90px;
     }
     .container {
       margin-top: 0;
@@ -87,6 +92,7 @@
   @media (max-width: 720px) {
     section {
       height: calc(375px + 680px - (100vw / 5));
+      margin-top: -170px;
     }
     h1 {
       font-size: 1.6rem;
@@ -108,6 +114,9 @@
     }
   }
   @media (max-width: 460px) {
+    section {
+      margin-top: -190px;
+    }
     h1 {
       font-size: 1.4rem;
     }
