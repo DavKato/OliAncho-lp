@@ -154,9 +154,6 @@
     .campaign {
       left: 58%;
     }
-    .card {
-      margin-right: 7%;
-    }
   }
   @media (max-width: 890px) {
     .container {

@@ -2,17 +2,16 @@
   import LabelSeal from '../materials/LabelSeal.svelte'
   import QAList from '../fragments/QAList.svelte'
 
-  export let inview,
-    qa = ''
+  export let inview
   let viewed = false
   $: {
     if (inview) viewed = true
   }
 </script>
 
-<section id="qa" tabindex="-1" bind:this="{qa}" class:viewed>
-  <LabelSeal></LabelSeal>
-  <LabelSeal rotate></LabelSeal>
+<section id="qa" tabindex="-1" class:viewed>
+  <LabelSeal {viewed}></LabelSeal>
+  <LabelSeal {viewed} rotate></LabelSeal>
 
   <div class="container">
     <div class="h-box">

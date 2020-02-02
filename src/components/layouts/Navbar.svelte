@@ -1,8 +1,9 @@
 <script>
+  import { slide } from 'svelte/transition'
   import Image from 'svelte-i-pack'
   import Hamburger from '../materials/Hamburger.svelte'
 
-  export let inView
+  export let inView, showNav
 
   const list = [
     {
@@ -40,7 +41,8 @@
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
 
-<nav class:noshadow="{expanded}">
+{#if showNav}
+<nav class:noshadow="{expanded}" in:slide="{{delay: 300}}">
   <div class="wrap">
     <a href="#hero" on:click|preventDefault="{jumpToHash('hero')}">
       <h1 class="skl">OliAncho</h1></a
@@ -134,6 +136,7 @@
     ></Image>
   </a>
 </nav>
+{/if}
 
 <style>
   nav {

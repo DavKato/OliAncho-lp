@@ -1,52 +1,101 @@
 <script>
+  import { onMount, createEventDispatcher } from 'svelte'
+  import { fly } from 'svelte/transition'
   import Image from 'svelte-i-pack'
+  import Wine from '../materials/Wine.svelte'
   import DownArrow from '../materials/DownArrow.svelte'
+  import spiders from '../../data/heroSpiders.js'
 
-  const spiders = [
-    {
-      text: '気持ちの良い取引',
-      animationStart: 200,
-    },
-    {
-      text: 'わかりやすい説明',
-      animationStart: 400,
-    },
-    {
-      text: 'オリジナルデザイン',
-      animationStart: 300,
-    },
-    {
-      text: '1ヶ月保証付き',
-      animationStart: 100,
-    },
-  ]
+  const dispatch = createEventDispatcher()
+
+  let loaded,
+    hero,
+    leftBox,
+    wineBox,
+    pour = false,
+    slideLeft = false,
+    slideDown = false
+
+  const backEase = t => {
+    const s = 0.85
+    return --t * t * ((s + 1) * t + s) + 1
+  }
+
+  const getRdmNo = num => Math.ceil(Math.random() * num)
+
+  const triggerSlideLeft = () => {
+    leftBox.style.transform = 'translate3d(0,0,0)'
+    slideLeft = true
+  }
+
+  const done = () => {
+    dispatch('done')
+  }
+
+  if (!process.browser) {
+    loaded = true
+    slideLeft = true
+    slideDown = true
+  }
+  onMount(() => {
+    hero.style.opacity = 1
+    loaded = true
+  })
 </script>
 
-<header id="hero" tabindex="-1">
-  <div class="left-box">
-    <div class="wine-box">
-      <img src="svg/wine.svg" alt="" class="wine-img" />
-      <Image
-        src="pc/2x/leaf3.png"
-        width="501*2"
-        sizes="160px"
-        alt=""
-        class="hero-leaf"
-        no-inline
-      ></Image>
+<header
+  id="hero"
+  tabindex="-1"
+  bind:this="{hero}"
+  on:load="{() => loaded = true}"
+>
+  {#if loaded }
+  <div
+    class="left-box"
+    in:fly="{{ y: -1000, duration: 400, easing: backEase }}"
+    on:introend="{() => pour = true}"
+    bind:this="{leftBox}"
+  >
+    <div class="wine-box" bind:this="{ wineBox }">
+      <Wine {pour} on:poured="{triggerSlideLeft}"></Wine>
+      {#if slideDown}
+      <div
+        class="leaf-box"
+        in:fly="{{y: -1000, duration: 600, delay: 0, easing: backEase}}"
+        on:introend="{done}"
+      >
+        <Image
+          src="pc/2x/leaf3.png"
+          width="501*2"
+          sizes="160px"
+          alt=""
+          class="hero-leaf"
+          no-inline
+        ></Image>
+      </div>
+      {/if}
       <h2 class="left-title">WEBサイト制作<br />承ります</h2>
     </div>
   </div>
-
+  {/if}
   <div class="right-box">
-    <h2 class="right-title">
+    {#if slideLeft}
+    <h2
+      class="right-title"
+      in:fly="{{x: 1000, duration: 1100, easing: backEase}}"
+      on:introend="{() => slideDown = true}"
+    >
       個人だからこそできる<span class="strong"
         >あなたにぴったりの<br />WEBサイトを！</span
       >
     </h2>
+    {/if}
     <div class="spider-container">
-      {#each spiders as spider}
-      <div class="spider-box skr">
+      {#each spiders as spider} {#if slideDown}
+      <div
+        class="spider-box skr"
+        in:fly="{{y: -1000, duration: 600, delay: getRdmNo(400), easing: backEase}}"
+      >
         <p class="spider-text">{spider.text}</p>
         <Image
           src="pc/2x/spider.thread.top.png"
@@ -56,16 +105,13 @@
           no-inline
         ></Image>
       </div>
-      {/each}
+      {/if} {/each}
     </div>
   </div>
   <DownArrow></DownArrow>
 </header>
 
 <style>
-  h2 {
-    font-family: var(--noto);
-  }
   header {
     display: flex;
     align-items: flex-end;
@@ -75,12 +121,15 @@
     height: 100vh;
     width: 100%;
     box-shadow: 0 5px 6px var(--shadow);
+    opacity: 0;
   }
   header:focus {
     outline: none;
   }
   .left-box {
     width: 40%;
+    transition: transform 0.9s;
+    transform: translate3d(calc(50% + 80px), 0, 0);
   }
   .wine-box {
     max-width: 400px;
@@ -88,14 +137,16 @@
     position: relative;
     padding-bottom: 1rem;
   }
-  .wine-img {
-    width: 400px;
+  h2 {
+    font-family: var(--noto);
   }
-  :global(.hero-leaf) {
+  .leaf-box {
     top: 8%;
     left: 19%;
     transform: rotate(22deg);
     position: absolute;
+  }
+  :global(.hero-leaf) {
     width: 160px;
   }
   .left-title {
@@ -133,6 +184,7 @@
   .spider-container {
     display: flex;
     flex-wrap: wrap;
+    height: 13.8rem;
     margin-top: 5rem;
     position: relative;
     z-index: 0;
@@ -222,9 +274,6 @@
     .wine-box {
       padding-bottom: 0.5rem;
       margin: 0;
-    }
-    .wine-img {
-      width: 360px;
     }
     :global(.hero-leaf) {
       width: 140px;
@@ -318,9 +367,6 @@
     }
     .wine-box {
       padding-bottom: 0.2rem;
-    }
-    .wine-img {
-      width: 300px;
     }
     :global(.hero-leaf) {
       width: 120px;

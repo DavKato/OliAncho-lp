@@ -1,20 +1,43 @@
 <script>
-  export let rotate = false
+  export let viewed = false,
+    rotate = false
 </script>
 
 <div class:rotate>
-  <span class="label one">
+  <span class="label one" class:viewed1="{viewed}">
     OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
-    OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
   </span>
 
-  <span class="label two">
+  <span class="label two" class:viewed2="{viewed}">
     OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
-    OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
+    OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO OLIANCHO
   </span>
 </div>
 
 <style>
+  @keyframes go-round1 {
+    to {
+      transform: translate3d(300px, 0, 0);
+    }
+  }
+  @keyframes go-round2 {
+    to {
+      transform: rotate(180deg) translate3d(300px, 0, 0);
+    }
+  }
+  .viewed1 {
+    animation: go-round1 20s linear infinite;
+  }
+  .viewed2 {
+    animation: go-round2 20s linear infinite;
+  }
   div {
     position: absolute;
     width: 100vw;

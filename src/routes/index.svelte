@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte'
+
   import Navbar from '../components/layouts/Navbar.svelte'
   import Hero from '../components/layouts/Hero.svelte'
   import Intro from '../components/layouts/Intro.svelte'
@@ -10,9 +12,9 @@
   import Contact from '../components/layouts/Contact.svelte'
   import Bottoms from '../components/layouts/Bottoms.svelte'
 
-  import { onMount } from 'svelte'
+  let showNav = false,
+    inView = ''
 
-  let inView = ''
   const cb = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -21,27 +23,26 @@
     })
   }
   const observer = process.browser
-    ? new IntersectionObserver(cb, { threshold: 0.3 })
+    ? new IntersectionObserver(cb, { threshold: 0.2 })
     : null
 
   onMount(() => {
     const sections = document.querySelectorAll('section')
-
     sections.forEach(el => observer.observe(el))
   })
 </script>
 
-<Navbar {inView}></Navbar>
+<Navbar {inView} {showNav}></Navbar>
 
 <main>
-  <Hero></Hero>
+  <Hero on:done="{() => showNav = true}"></Hero>
   <Intro inview="{inView === 'intro'}"></Intro>
   <Features inview="{inView === 'features'}"></Features>
   <Comparison inview="{inView === 'comparison'}"></Comparison>
   <Flow inview="{inView === 'flow'}"></Flow>
   <Price inview="{inView === 'price'}"></Price>
   <QA inview="{inView === 'qa'}"></QA>
-  <Contact inview="{inView === 'contact'}"></Contact>
+  <Contact></Contact>
 </main>
 <Bottoms></Bottoms>
 <style global>
