@@ -1,5 +1,6 @@
 <script>
   import Before from '../fragments/Before.svelte'
+
   export let card
 </script>
 

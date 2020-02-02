@@ -2,10 +2,15 @@
   import LabelSeal from '../materials/LabelSeal.svelte'
   import QAList from '../fragments/QAList.svelte'
 
-  export let qa = ''
+  export let inview,
+    qa = ''
+  let viewed = false
+  $: {
+    if (inview) viewed = true
+  }
 </script>
 
-<section id="qa" tabindex="-1" bind:this="{qa}">
+<section id="qa" tabindex="-1" bind:this="{qa}" class:viewed>
   <LabelSeal></LabelSeal>
   <LabelSeal rotate></LabelSeal>
 
@@ -28,8 +33,14 @@
     height: calc(375px + 1250px - (100vw / 5));
     position: relative;
     overflow: hidden;
-    transform: rotate(-11deg);
+    transition: all 0.5s ease-out, opacity 0.5s ease-in-out;
+    transform: rotate(-50deg);
+    opacity: 0;
     padding-top: 4rem;
+  }
+  .viewed {
+    transform: rotate(-11deg);
+    opacity: 1;
   }
   .container {
     height: 100%;

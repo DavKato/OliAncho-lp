@@ -21,7 +21,7 @@
     })
   }
   const observer = process.browser
-    ? new IntersectionObserver(cb, { threshold: 0.1 })
+    ? new IntersectionObserver(cb, { threshold: 0.3 })
     : null
 
   onMount(() => {

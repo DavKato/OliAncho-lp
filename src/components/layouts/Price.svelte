@@ -4,6 +4,12 @@
   import PriceCard from '../fragments/PriceCard.svelte'
   import cardList from '../../data/priceCardList.js'
   import Image from 'svelte-i-pack'
+
+  export let inview
+  let viewed = false
+  $: {
+    if (inview) viewed = true
+  }
 </script>
 <section id="price" tabindex="-1">
   <YellowCircle price></YellowCircle>
@@ -14,8 +20,8 @@
     class="price-leaf abs"
     no-inline
   ></Image>
-  <img src="svg/spiderweb.svg" alt="" class="web1 abs d-shadow" />
-  <img src="svg/spiderweb.svg" alt="" class="web2 abs d-shadow" />
+  <img src="svg/spiderweb.svg" alt="" class="web1 abs d-shadow" class:viewed />
+  <img src="svg/spiderweb.svg" alt="" class="web2 abs d-shadow" class:viewed />
 
   <div class="container">
     <div class="head-box">
@@ -44,7 +50,7 @@
       </div>
     </div>
 
-    {#each cardList as card}
+    {#each cardList as card (card.name)}
     <PriceCard {card}></PriceCard>
     {/each}
     <div class="tail">
@@ -108,6 +114,13 @@
     z-index: 10;
   }
 
+  img {
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+  }
+  .viewed {
+    opacity: 1;
+  }
   .web1 {
     width: 510px;
     height: 510px;

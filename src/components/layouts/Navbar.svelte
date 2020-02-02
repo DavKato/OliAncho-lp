@@ -28,7 +28,7 @@
   ]
   let expanded = false
 
-  const handleClick = id => () => {
+  const jumpToHash = id => () => {
     const offset = id === 'hero' || id === 'qa' ? 0 : 80
     const target = document.getElementById(id)
     const position = target.offsetTop - offset
@@ -42,7 +42,7 @@
 
 <nav class:noshadow="{expanded}">
   <div class="wrap">
-    <a href="#hero" on:click|preventDefault="{handleClick('hero')}">
+    <a href="#hero" on:click|preventDefault="{jumpToHash('hero')}">
       <h1 class="skl">OliAncho</h1></a
     >
     <div class="sp-menu">
@@ -51,7 +51,7 @@
           src="sp/3x/mail.png"
           width="60*3"
           alt="Contact us"
-          class="nav-sp-mail"
+          class="nav-sp-mail skl"
         ></Image
       ></a>
       <Hamburger {expanded} on:click="{() => expanded = !expanded}"></Hamburger>
@@ -64,7 +64,7 @@
         <a
           href="#{item.id}"
           class="nav-link"
-          on:click|preventDefault="{handleClick(item.id)}"
+          on:click|preventDefault="{jumpToHash(item.id)}"
           ><span class="back">{item.name}</span
           ><span class="front">{item.name}</span>
           <span class="underbar" class:active="{inView === item.id}"></span>
@@ -117,7 +117,7 @@
   <a
     href="#contact"
     class="contact-link skl"
-    on:click|preventDefault="{handleClick('contact')}"
+    on:click|preventDefault="{jumpToHash('contact')}"
   >
     <Image
       src="pc/2x/callout.header.png"
@@ -319,6 +319,15 @@
       font-weight: normal;
       padding: 3rem 1rem 5px;
     }
+    .back {
+      position: absolute;
+      top: unset;
+      left: unset;
+      transform: rotateX(-180deg);
+    }
+    .nav-link:hover .back {
+      transform: rotateX(0deg);
+    }
     .ul-sp {
       display: flex;
       justify-content: center;
@@ -328,6 +337,9 @@
       display: block;
       width: 55px;
       margin: 50px 30px;
+    }
+    .underbar {
+      display: none;
     }
   }
 </style>

@@ -1,7 +1,5 @@
 <script>
   import { tweened } from 'svelte/motion'
-  import { createEventDispatcher } from 'svelte'
-  const dispatch = createEventDispatcher()
 
   export let expanded
 
@@ -14,12 +12,7 @@
     expanded ? ($y1 = 2) : ($y1 = 14)
   }
 </script>
-<svg
-  viewBox="0 0 16 16"
-  on:click|stopPropagation
-  aria-label="menu"
-  tabindex="0"
->
+<svg viewBox="0 0 16 16" on:click|stopPropagation aria-hidden="true">
   <g class="lines">
     <line x1="0" x2="16" y1="2" y2="{$y2}" />
     <line class="line2" x1="0" x2="16" y1="8" y2="8" class:expanded />
@@ -34,6 +27,10 @@
     margin-left: 29px;
     margin-right: 18px;
     cursor: pointer;
+    transition: transform 0.2s;
+  }
+  svg:hover {
+    transform: scale(1.1);
   }
   .lines {
     stroke: #fff;

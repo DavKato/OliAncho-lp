@@ -2,15 +2,14 @@
   import Image from 'svelte-i-pack'
   import Btn from '../fragments/Btn.svelte'
 
-  export let feat = '',
-    inview
+  export let inview
   let viewed = false
   $: {
     if (inview) viewed = true
   }
 </script>
 
-<section id="features" tabindex="-1" bind:this="{feat}" class:viewed>
+<section id="features" tabindex="-1" class:viewed>
   <div class="container">
     <Image
       src="pc/2x/leaf2.png"
@@ -130,8 +129,8 @@
     padding-top: 4.4rem;
     position: relative;
     opacity: 0;
-    transform: translate3d(0, 70px, 0);
-    transition: transform 0.9s ease-out, opacity 0.9s ease-out;
+    transform: translate3d(0, 200px, 0);
+    transition: transform 0.9s ease-out, opacity 0.9s ease-in-out;
   }
   .viewed {
     opacity: 1;
