@@ -61,7 +61,7 @@
       {#if slideDown}
       <div
         class="leaf-box"
-        in:fly="{{y: -1000, duration: 600, delay: 0, easing: backEase}}"
+        in:fly="{{y: -1000, duration: 600, easing: backEase}}"
         on:introend="{done}"
       >
         <Image
@@ -82,7 +82,7 @@
     {#if slideLeft}
     <h2
       class="right-title"
-      in:fly="{{x: 1000, duration: 1100, easing: backEase}}"
+      in:fly="{{x: 1000, duration: 800, easing: backEase}}"
       on:introend="{() => slideDown = true}"
     >
       個人だからこそできる<span class="strong"

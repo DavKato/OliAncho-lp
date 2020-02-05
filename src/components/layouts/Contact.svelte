@@ -4,31 +4,33 @@
     validateEmail,
     validateMsg,
   } from '../helpers/validation.js'
-  import { handleSubmit } from '../helpers/http.js'
+  import handleSubmit from '../helpers/http.js'
   import YellowCircle from '../materials/YellowCircle.svelte'
-  import Btn from '../fragments/Btn.svelte'
+  import SubmitBtn from '../fragments/SubmitBtn.svelte'
   import FlowerBox from '../fragments/FlowerBox.svelte'
+  import Thanks from '../fragments/Thanks.svelte'
   import Dot from '../materials/Dot.svelte'
   import Image from 'svelte-i-pack'
 
-  export let cont = ''
-  let name = ''
-  let email = ''
-  let message = ''
-  let dummy = ''
+  let loading = false,
+    thanks = { success: false, text: '' },
+    name = '',
+    email = '',
+    message = '',
+    dummy = ''
 
   $: isValid = [validateName(name), validateEmail(email), validateMsg(message)]
   $: validInput = isValid.every(el => el === true)
 
-  const sendMessage = () => {
-    if (dummy) return formInit()
-    try {
-      handleSubmit({ name, email, message }, formInit)
-    } catch (err) {
-      alert(
-        '何らかの理由で送信に失敗しました。\n恐れ入りますが、通信状況を確認して再度お送り頂くか、\nSNSよりご連絡ください。',
-      )
-    }
+  const sendMessage = async () => {
+    if (dummy || !name || !email || !message) return null
+    loading = true
+    const res = await handleSubmit({ name, email, message })
+
+    thanks = { ...res }
+    setTimeout(() => (thanks.text = ''), 5000)
+    if (thanks.success) formInit()
+    loading = false
   }
   const formInit = () => {
     name = ''
@@ -38,7 +40,7 @@
   }
 </script>
 
-<section id="contact" tabindex="-1" bind:this="{cont}">
+<section id="contact" tabindex="-1">
   <YellowCircle contact></YellowCircle>
   <div class="h-box">
     <h1>
@@ -100,14 +102,20 @@
       </li>
 
       <li>
-        <Btn
+        <SubmitBtn
+          id="form-submit"
           text="送信する"
-          type="submit"
-          cont
           disabled="{!validInput || dummy}"
-        ></Btn>
+          {loading}
+        ></SubmitBtn>
       </li>
     </ul>
+    {#if thanks.text.length > 0}
+    <Thanks
+      {...thanks}
+      on:exit="{() => thanks = {...thanks, text: ''}}"
+    ></Thanks>
+    {/if}
   </form>
 </section>
 
@@ -115,7 +123,7 @@
   section {
     position: relative;
     margin-top: -95px;
-    overflow-y: hidden;
+    overflow: hidden;
     padding-bottom: 70px;
     padding-top: 70px;
   }

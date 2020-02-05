@@ -19,7 +19,7 @@
   }
   .price {
     top: -18%;
-    left: 36%;
+    left: 40%;
   }
   .contact {
     top: 0;

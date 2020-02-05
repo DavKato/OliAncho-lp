@@ -51,7 +51,7 @@
     </div>
 
     {#each cardList as card (card.name)}
-    <PriceCard {card}></PriceCard>
+    <PriceCard {card} {viewed}></PriceCard>
     {/each}
     <div class="tail">
       <p>※ホスティング無料</p>

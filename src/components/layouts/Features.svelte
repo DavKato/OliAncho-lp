@@ -112,7 +112,7 @@
   </p>
   <p>いつでもお気軽にお問い合わせください :)</p>
   <a href="#contact" class="feat-btn">
-    <Btn text="ご依頼・ご相談はこちらから" feat m0a postLine>
+    <Btn text="ご依頼・ご相談はこちらから">
       <Image
         src="pc/2x/davigobu.small.png"
         width="74*2"
@@ -130,7 +130,7 @@
     position: relative;
     opacity: 0;
     transform: translate3d(0, 200px, 0);
-    transition: transform 0.9s ease-out, opacity 0.9s ease-in-out;
+    transition: transform 0.7s ease-out, opacity 0.7s ease-in-out;
   }
   .viewed {
     opacity: 1;

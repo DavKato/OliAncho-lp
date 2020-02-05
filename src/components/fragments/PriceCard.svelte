@@ -1,41 +1,53 @@
 <script>
+  import Image from 'svelte-i-pack'
   import Before from '../fragments/Before.svelte'
 
-  export let card
+  export let card,
+    viewed = false
 </script>
 
-<div class="card">
-  <h2 class="name" class:crown="{card.crown}">
-    {card.name}
-  </h2>
-  {#if card.campaign}
-  <p class="campaign">キャンペーン中！</p>
-  {/if}
-  <h2 class="num">
-    <Before>{card.before}</Before>
-    {card.price}
-  </h2>
-  <p class="desc">{ card.description }</p>
-  <hr />
-  <dl>
-    <dt>内訳</dt>
-    {#each card.breakdown as item}
-    <dd>
-      <span class="b-title">{item.title}</span
-      ><span class="b-price">{item.price}</span>
-    </dd>
-    {/each}
-    <dt></dt>
-  </dl>
-  <Image
-    src="pc/2x/spider.thread.price.png"
-    width="1303*2"
-    alt=""
-    class="price-spider abs d-shadow"
-  ></Image>
+<div class:anim-container="{card.crown}" class:animate="{card.crown && viewed}">
+  <div class="card">
+    <h2 class="name" class:crown="{card.crown}">
+      {card.name}
+    </h2>
+    {#if card.campaign}
+    <p class="campaign">キャンペーン中！</p>
+    {/if}
+    <h2 class="num">
+      <Before>{card.before}</Before>
+      {card.price}
+    </h2>
+    <p class="desc">{ card.description }</p>
+    <hr />
+    <dl>
+      <dt>内訳</dt>
+      {#each card.breakdown as item}
+      <dd>
+        <span class="b-title">{item.title}</span
+        ><span class="b-price">{item.price}</span>
+      </dd>
+      {/each}
+      <dt></dt>
+    </dl>
+    <Image
+      src="pc/2x/spider.thread.price.png"
+      width="1303*2"
+      alt=""
+      class="price-spider abs d-shadow"
+      no-inline
+    ></Image>
+  </div>
 </div>
 
 <style>
+  .anim-container {
+    transform: translate3d(3000px, 0, 0);
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  }
+  .animate {
+    transform: translate3d(0px, 0, 0);
+  }
   .card {
     --pd: 2em;
     margin: 8rem 10% 0 auto;
@@ -48,12 +60,30 @@
     align-items: center;
     background-color: #fff;
     box-shadow: 5px 5px 6px var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
     cursor: default;
     z-index: 10;
+    transition: transform 0.3s ease-in-out;
   }
   :global(.card + .card) {
     margin-top: 5rem;
+  }
+  .card:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 6px 8px 8px var(--shadow);
+  }
+  .card:hover {
+    transform: translate3d(-3px, -5px, 0);
+  }
+  .card:hover:after {
+    opacity: 1;
   }
   .campaign {
     position: absolute;
@@ -75,7 +105,13 @@
   }
   @media (min-width: 1151px) {
     .crown:before {
-      content: '王冠';
+      content: url('/svg/crown.svg');
+      width: 1.5em;
+      display: inline-block;
+      position: relative;
+      bottom: -3px;
+      right: 7px;
+      filter: drop-shadow(5px 5px 3px var(--shadow));
     }
   }
   .num {
@@ -134,15 +170,6 @@
     right: 95%;
     width: 1303px;
     transform: translateY(40%);
-    opacity: 0;
-    transition: opacity 0.1s;
-  }
-  .card:hover {
-    transform: translate(-3px, -5px);
-    box-shadow: 6px 8px 8px var(--shadow);
-  }
-  .card:hover :global(.price-spider) {
-    opacity: 1;
   }
 
   @media (min-width: 1600px) {
@@ -172,7 +199,13 @@
       border-top-right-radius: var(--br);
     }
     .crown:after {
-      content: '王冠';
+      content: url('/svg/crown.svg');
+      width: 1.2em;
+      display: inline-block;
+      position: relative;
+      bottom: -1px;
+      left: 4px;
+      filter: drop-shadow(5px 5px 3px var(--shadow));
     }
     .campaign {
       position: static;

@@ -161,6 +161,7 @@
   }
   .sp-list {
     height: 100%;
+    margin-top: var(--h);
   }
   ul {
     padding: 0;
@@ -265,19 +266,22 @@
 
   @media (max-width: 890px) {
     nav {
+      --h: 3.75rem;
       flex-direction: column;
-      align-items: flex-start;
-      height: 3.75rem;
+      height: var(--h);
     }
     .noshadow {
       box-shadow: none;
     }
     .wrap {
-      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 3.75rem;
     }
     h1 {
       font-size: 1.7rem;

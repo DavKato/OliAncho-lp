@@ -6,5 +6,4 @@ export const validateEmail = target =>
         target,
       )
     : false
-
 export const validateMsg = target => target.length > 0 && target.length <= 400

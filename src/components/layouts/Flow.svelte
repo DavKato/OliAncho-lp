@@ -129,9 +129,13 @@
       ></Image>
     </h1>
 
-    <dl class:viewed>
+    <dl>
       {#each list as item, i}
-      <div class="list-container">
+      <div
+        class="list-container"
+        class:viewed
+        style="transition: all 0.5s ease-out {i * 0.2}s;"
+      >
         <div class="step-box">
           <span class="step-span step-step">STEP</span>
           <div class="step-span step-num">{i+1}</div>
@@ -170,13 +174,7 @@
   dl {
     margin-top: 5em;
     font-size: 1rem;
-    transform: translate3d(200px, 0, 0);
-    opacity: 0;
     transition: transform 0.7s 0.1s ease-out, opacity 0.7s 0.1s ease-out;
-  }
-  .viewed {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
   }
   .list-container {
     background-color: rgba(245, 244, 242, 0.8);
@@ -184,6 +182,12 @@
     padding: 1.7rem 0 1rem 5.4rem;
     position: relative;
     margin-bottom: 2.8rem;
+    transform: translate3d(200px, 0, 0);
+    opacity: 0;
+  }
+  .viewed {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
   .list-container:last-child > div {
     background-color: var(--ocher);

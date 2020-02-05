@@ -27,12 +27,12 @@
 
 <style>
   section {
-    margin-top: -147px;
+    margin-top: -233px;
     min-height: 1300px;
     height: calc(375px + 1250px - (100vw / 5));
     position: relative;
     overflow: hidden;
-    transition: all 0.5s ease-out, opacity 0.5s ease-in-out;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-in-out;
     transform: rotate(-50deg);
     opacity: 0;
     padding-top: 4rem;

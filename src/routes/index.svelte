@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte'
 
+  import detectIE from '../components/helpers/detectIE.js'
   import Navbar from '../components/layouts/Navbar.svelte'
   import Hero from '../components/layouts/Hero.svelte'
   import Intro from '../components/layouts/Intro.svelte'
@@ -11,6 +12,8 @@
   import QA from '../components/layouts/QA.svelte'
   import Contact from '../components/layouts/Contact.svelte'
   import Bottoms from '../components/layouts/Bottoms.svelte'
+
+  const isIE = detectIE()
 
   let showNav = false,
     inView = ''
@@ -33,6 +36,10 @@
 </script>
 
 <Navbar {inView} {showNav}></Navbar>
+
+{#if isIE} {#await import('../components/fragments/noIE.svelte') then c}
+<svelte:component this="{c.default}"></svelte:component>
+{/await} {/if}
 
 <main>
   <Hero on:done="{() => showNav = true}"></Hero>
