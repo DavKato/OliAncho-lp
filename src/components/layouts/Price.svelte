@@ -38,7 +38,7 @@
       <div class="campaign">
         <h4>
           東京オリンピック<br /><strong>キャンペーン開催中</strong
-          ><br />2020年<Dot sentence="9月" bold top="-5px"></Dot>まで！
+          ><br />2020年<Dot sentence="9月" bold mid></Dot>まで！
         </h4>
         <Image
           src="pc/2x/gunya.white.png"
@@ -64,7 +64,7 @@
   section {
     position: relative;
     margin-top: 15rem;
-    padding-bottom: 20rem;
+    /* padding-bottom: 20rem; */
   }
   .container {
     width: 66%;
@@ -124,7 +124,7 @@
   .web1 {
     width: 510px;
     height: 510px;
-    top: -4%;
+    top: -5%;
     right: 71%;
     transform: rotate(18deg);
   }
@@ -132,12 +132,12 @@
     width: 512px;
     height: 512px;
     transform: rotate(36deg);
-    bottom: 20%;
-    right: 70%;
+    bottom: -0.3%;
+    right: 71%;
   }
   :global(.price-leaf) {
-    width: 358px;
-    bottom: 18.2%;
+    width: 370px;
+    bottom: -2.5%;
     right: 69%;
     transform: rotate(156deg);
     filter: drop-shadow(-4px -4px 3px var(--shadow));
@@ -198,18 +198,18 @@
     }
     .web2 {
       transform: rotate(34deg);
-      bottom: 26%;
+      bottom: -5%;
       right: 70%;
     }
     :global(.price-leaf) {
       width: 290px;
-      bottom: 21%;
-      right: 59%;
+      bottom: -11%;
+      right: 56%;
     }
     .tail {
       display: block;
       margin-top: 3rem;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       padding-left: 7rem;
       line-height: 1.6;
       letter-spacing: 1px;
@@ -240,12 +240,12 @@
       height: 240px;
     }
     .web1 {
-      top: 8.5%;
+      top: 13%;
       right: 63%;
     }
     .web2 {
-      bottom: 33%;
-      right: 67%;
+      bottom: -2%;
+      right: 66%;
     }
     :global(.price-leaf) {
       width: 210px;
@@ -254,9 +254,13 @@
     }
     .tail {
       padding-left: 5rem;
+      font-size: 0.9rem;
     }
   }
   @media (max-width: 460px) {
+    section {
+      margin-top: 2rem;
+    }
     .container {
       width: 85%;
     }
@@ -265,7 +269,13 @@
       font-size: 1.5rem;
     }
     .campaign {
+      top: -6%;
       left: 58%;
+    }
+    :global(.price-leaf) {
+      bottom: -7%;
+      right: 60%;
+      width: 180px;
     }
     .tail {
       padding-left: 0;

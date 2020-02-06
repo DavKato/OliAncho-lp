@@ -48,7 +48,7 @@
       <h1 class="skl">OliAncho</h1></a
     >
     <div class="sp-menu">
-      <a href="#contact"
+      <a href="#contact" on:click|preventDefault="{jumpToHash('contact')}"
         ><Image
           src="sp/3x/mail.png"
           width="60*3"
@@ -133,6 +133,7 @@
       width="62*2"
       alt="ご依頼・ご相談"
       style="width: 62px;"
+      class:active-img="{inView === 'contact'}"
     ></Image>
   </a>
 </nav>
@@ -215,6 +216,9 @@
   .active {
     transform: scaleX(1);
   }
+  .active-img {
+    filter: drop-shadow(0 0 5px white);
+  }
   .contact-link {
     display: flex;
     align-items: center;
@@ -225,7 +229,7 @@
     margin-right: 0.5rem;
     margin-top: 1.25rem;
   }
-  :global(.nav-sp-mail) {
+  .nav-sp-mail {
     display: block;
     height: 39px;
   }
@@ -340,13 +344,29 @@
       justify-content: center;
       align-items: center;
     }
-    :global(.nav-sp-link) {
+    .nav-sp-link {
       display: block;
       width: 55px;
       margin: 50px 30px;
     }
     .underbar {
       display: none;
+    }
+  }
+  @media (max-width: 580px) {
+    nav {
+      --h: 2.75rem;
+    }
+    .nav-sp-mail {
+      height: 30px;
+    }
+    .nav-link {
+      font-size: 1.2rem;
+      padding-top: 2rem;
+    }
+    .nav-sp-link {
+      width: 45px;
+      margin: 40px 20px;
     }
   }
 </style>

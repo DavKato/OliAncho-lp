@@ -384,11 +384,25 @@
       line-height: 2.7rem;
     }
     @media (max-width: 460px) {
+      header {
+        padding-top: 14rem;
+      }
+      .right-title {
+        font-size: 1.2rem;
+        top: 70px;
+      }
       .strong {
-        font-size: 2.4rem;
+        font-size: 2rem;
+      }
+      .left-title {
+        font-size: 1.4rem;
+        top: 29%;
+      }
+      :global(.hero-leaf) {
+        width: 90px;
       }
       .spider-container {
-        margin-left: -40px;
+        margin: 70px 0 0 -10px;
       }
     }
   }

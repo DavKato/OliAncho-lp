@@ -1,7 +1,6 @@
 <script>
   import Image from 'svelte-i-pack'
-  export let text,
-    id = ''
+  export let text
 </script>
 <div>
   <button class="back" tabindex="-1" aria-hidden="true">
@@ -15,7 +14,7 @@
       no-inline
     ></Image>
   </button>
-  <button {id} class="front" tabindex="-1">
+  <button class="front" tabindex="-1">
     <slot></slot>
     <span>{ text }</span>
     <Image
@@ -75,10 +74,12 @@
     font-size: 1.88rem;
     font-weight: 700;
     padding: 1.23rem 0;
+    white-space: nowrap;
   }
   :global(.btn-cto) {
     width: 98px;
-    margin-top: -1.6rem;
+    position: relative;
+    top: -0.9rem;
   }
   .btn-deco {
     position: absolute;
@@ -121,11 +122,15 @@
     }
     :global(.btn-cto) {
       width: 73px;
+      top: -0.6rem;
     }
   }
   @media (max-width: 580px) {
     span {
       font-size: 1.2rem;
+    }
+    :global(.btn-cto) {
+      top: -0.5rem;
     }
   }
   @media (max-width: 460px) {

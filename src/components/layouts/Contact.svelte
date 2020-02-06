@@ -55,7 +55,7 @@
     </h1>
     <p class="title-p">
       ヒアリングからお見積もりまで<strong
-        ><Dot sentence="無料" color="#fff" top="-8px"></Dot></strong
+        ><Dot sentence="無料" color="#fff" tall></Dot></strong
       >で受け付けております!<br />お気軽にご連絡ください :）
     </p>
   </div>

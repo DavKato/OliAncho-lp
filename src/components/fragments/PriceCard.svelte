@@ -48,9 +48,12 @@
   .animate {
     transform: translate3d(0px, 0, 0);
   }
-  .card {
-    --pd: 2em;
+  .anim-container > .card {
     margin: 8rem 10% 0 auto;
+  }
+  .card {
+    margin: 5rem 10% 0 auto;
+    --pd: 2em;
     padding: var(--pd);
     position: relative;
     font-size: 1rem;
@@ -64,9 +67,6 @@
     z-index: 10;
     transition: transform 0.3s ease-in-out;
   }
-  :global(.card + .card) {
-    margin-top: 5rem;
-  }
   .card:after {
     content: '';
     position: absolute;
@@ -78,6 +78,7 @@
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     box-shadow: 6px 8px 8px var(--shadow);
+    pointer-events: none;
   }
   .card:hover {
     transform: translate3d(-3px, -5px, 0);
@@ -102,6 +103,7 @@
     right: 103%;
     white-space: nowrap;
     text-shadow: 5px 5px 6px var(--shadow);
+    letter-spacing: 3px;
   }
   @media (min-width: 1151px) {
     .crown:before {
@@ -174,13 +176,13 @@
 
   @media (min-width: 1600px) {
     .card {
-      margin: 8rem auto 0;
+      margin: 8rem auto 0 !important;
     }
   }
   @media (max-width: 1150px) {
     .card {
       --br: 3px;
-      margin-right: 6%;
+      margin-right: 6% !important;
       padding-top: 1.75em;
       border-radius: var(--br);
     }
@@ -244,7 +246,7 @@
   }
   @media (max-width: 580px) {
     .card {
-      margin-right: 0;
+      margin-right: 0 !important;
       width: auto;
       max-width: 340px;
       align-items: flex-start;
@@ -279,6 +281,10 @@
     }
     .num {
       font-size: 2.8em;
+    }
+    :global(.price-spider) {
+      width: 750px;
+      top: 1.2rem;
     }
   }
 </style>

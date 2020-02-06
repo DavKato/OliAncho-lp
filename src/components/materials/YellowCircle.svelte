@@ -18,7 +18,7 @@
     right: 30%;
   }
   .price {
-    top: -18%;
+    top: -22%;
     left: 40%;
   }
   .contact {
@@ -32,8 +32,8 @@
 
   @media (max-width: 1150px) {
     .price {
-      top: -9%;
-      left: 30%;
+      top: -17%;
+      left: 32%;
     }
     .contact {
       left: -30%;
@@ -57,10 +57,6 @@
       width: 1400px;
       height: 1400px;
     }
-    .price {
-      top: -14%;
-      left: 25%;
-    }
     .contact {
       display: none;
     }
@@ -73,10 +69,6 @@
     }
     .comp {
       top: -21%;
-    }
-    .price {
-      top: -13%;
-      left: 23%;
     }
   }
   @media (max-width: 580px) {
@@ -95,6 +87,12 @@
   @media (max-width: 460px) {
     .comp {
       top: -19%;
+    }
+    .price {
+      width: 830px;
+      height: 830px;
+      top: -12%;
+      left: 16%;
     }
   }
 </style>

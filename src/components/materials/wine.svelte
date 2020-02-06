@@ -72,8 +72,6 @@ m-2640 -9845 c661 -142 3422 -191 3904 -68 85 21 184 39 220 40 37 0 138 13
   .liquid {
     fill: var(--wine);
   }
-  rect {
-  }
   @media (max-width: 890px) {
     svg {
       width: 360px;
@@ -82,6 +80,11 @@ m-2640 -9845 c661 -142 3422 -191 3904 -68 85 21 184 39 220 40 37 0 138 13
   @media (max-width: 580px) {
     svg {
       width: 300px;
+    }
+  }
+  @media (max-width: 460px) {
+    svg {
+      width: 240px;
     }
   }
 </style>

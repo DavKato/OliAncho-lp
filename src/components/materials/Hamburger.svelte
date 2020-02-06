@@ -48,4 +48,10 @@
       display: block;
     }
   }
+  @media (max-width: 580px) {
+    svg {
+      width: 32px;
+      margin-left: 18px;
+    }
+  }
 </style>

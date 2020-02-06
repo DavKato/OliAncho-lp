@@ -49,7 +49,6 @@
         top < 1000 && window.addEventListener('scroll', leafScroll)
       } else {
         leaf.style.opacity = 1
-        console.log('!! !! !! !skippete! !! !! !!')
       }
     } else if (!inview && process.browser) {
       window.removeEventListener('scroll', leafScroll)
@@ -134,7 +133,7 @@
       <div
         class="list-container"
         class:viewed
-        style="transition: all 0.5s ease-out {i * 0.2}s;"
+        style="transition: all 0.5s ease-out {i * 0.2}s"
       >
         <div class="step-box">
           <span class="step-span step-step">STEP</span>
@@ -381,6 +380,23 @@
     }
     dl {
       font-size: 0.71rem;
+      margin-top: 6em;
+    }
+    dd {
+      font-size: 1.35em;
+    }
+    .step-box {
+      left: -15px;
+      line-height: 1;
+    }
+    .step-span {
+      margin-left: 62%;
+    }
+    .step-num {
+      padding-left: 2px;
+    }
+    .list-container {
+      padding-left: 78px;
     }
   }
 </style>

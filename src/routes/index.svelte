@@ -1,3 +1,7 @@
+<script context="module">
+  let vh
+  if (process.browser) vh = window.innerHeight * 0.3
+</script>
 <script>
   import { onMount } from 'svelte'
 
@@ -20,13 +24,15 @@
 
   const cb = (entries, observer) => {
     entries.forEach(entry => {
+      const id = entry.target.id
       if (entry.isIntersecting) {
-        inView = entry.target.id
+        console.log(id)
+        inView = id
       }
     })
   }
   const observer = process.browser
-    ? new IntersectionObserver(cb, { threshold: 0.2 })
+    ? new IntersectionObserver(cb, { rootMargin: `${vh}px 0px 0px` })
     : null
 
   onMount(() => {
