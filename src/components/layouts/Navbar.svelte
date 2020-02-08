@@ -1,9 +1,10 @@
 <script>
   import { slide } from 'svelte/transition'
+  import { tweened } from 'svelte/motion'
   import Image from 'svelte-i-pack'
   import Hamburger from '../materials/Hamburger.svelte'
 
-  export let inView, showNav
+  export let inView, showNav, scroller
 
   const list = [
     {
@@ -27,22 +28,21 @@
       name: 'よくある質問',
     },
   ]
-  let expanded = false
+  let nav,
+    expanded = false
 
   const jumpToHash = id => () => {
-    const offset = id === 'hero' || id === 'qa' ? 0 : 80
     const target = document.getElementById(id)
-    const position = target.offsetTop - offset
-
-    window.scrollTo(0, position)
-    target.focus({ preventScroll: true })
+    const offset = parseInt(window.getComputedStyle(nav).height) + 10
+    scroller({ target, offset, cb: target.focus({ preventScroll: true }) })
+    
   }
 </script>
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
 
 {#if showNav}
-<nav class:noshadow="{expanded}" in:slide="{{delay: 300}}">
+<nav class:noshadow="{expanded}" in:slide="{{delay: 300}}" bind:this="{nav}">
   <div class="wrap">
     <a href="#hero" on:click|preventDefault="{jumpToHash('hero')}">
       <h1 class="skl">OliAncho</h1></a
@@ -133,7 +133,7 @@
       width="62*2"
       alt="ご依頼・ご相談"
       style="width: 62px;"
-      class:active-img="{inView === 'contact'}"
+      class:contact="{inView === 'contact'}"
     ></Image>
   </a>
 </nav>
@@ -216,7 +216,7 @@
   .active {
     transform: scaleX(1);
   }
-  .active-img {
+  .contact {
     filter: drop-shadow(0 0 5px white);
   }
   .contact-link {

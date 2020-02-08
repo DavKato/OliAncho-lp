@@ -78,7 +78,7 @@
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     box-shadow: 6px 8px 8px var(--shadow);
-    pointer-events: none;
+    z-index: -1;
   }
   .card:hover {
     transform: translate3d(-3px, -5px, 0);

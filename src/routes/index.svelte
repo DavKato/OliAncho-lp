@@ -1,10 +1,13 @@
 <script context="module">
   let vh
-  if (process.browser) vh = window.innerHeight * 0.3
+  if (process.browser) {
+    vh = window.innerHeight * 0.4
+  }
 </script>
 <script>
   import { onMount } from 'svelte'
 
+  import smoothScroller from '../components/helpers/smoothScroller.js'
   import detectIE from '../components/helpers/detectIE.js'
   import Navbar from '../components/layouts/Navbar.svelte'
   import Hero from '../components/layouts/Hero.svelte'
@@ -20,28 +23,49 @@
   const isIE = detectIE()
 
   let showNav = false,
-    inView = ''
+    inView = '',
+    prevHeight = 0,
+    scroller
 
   const cb = (entries, observer) => {
     entries.forEach(entry => {
       const id = entry.target.id
-      if (entry.isIntersecting) {
-        console.log(id)
+      const height = entry.intersectionRect.height
+
+      if (height > vh && height > prevHeight) {
+        console.log(prevHeight, id, height)
         inView = id
       }
+      prevHeight = height
     })
   }
+  const buildThreshold = steps => {
+    let thresholds = []
+
+    for (let i = 1.0; i <= steps; i++) {
+      let ratio = i / steps
+      thresholds.push(ratio)
+    }
+
+    // thresholds.push(0)
+
+    return thresholds
+  }
   const observer = process.browser
-    ? new IntersectionObserver(cb, { rootMargin: `${vh}px 0px 0px` })
+    ? new IntersectionObserver(cb, {
+        // rootMargin: `${vh}px 0px`,
+        threshold: buildThreshold(12),
+      })
     : null
 
   onMount(() => {
+    scroller = smoothScroller()
     const sections = document.querySelectorAll('section')
     sections.forEach(el => observer.observe(el))
   })
 </script>
 
-<Navbar {inView} {showNav}></Navbar>
+<Navbar {inView} {showNav} {scroller}></Navbar>
 
 {#if isIE} {#await import('../components/fragments/noIE.svelte') then c}
 <svelte:component this="{c.default}"></svelte:component>
@@ -75,10 +99,12 @@
     --skr: -4deg;
     scroll-behavior: smooth;
   }
-  #sapper {
+  body {
     font-family: var(--gothic);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  main {
     overflow: hidden;
   }
   section:focus {
