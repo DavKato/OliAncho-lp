@@ -11,6 +11,7 @@
     "dev": "sapper dev",
     "build": "NODE_ENV=production sapper build --legacy",
     "export": "NODE_ENV=production sapper export --legacy",
+    "ex:firebase": "NODE_ENV=production sapper export --legacy && rm -rf firebase/public && cp -r __sapper__/export firebase/public",
     "tc:dev": "testcafe",
     "start": "node __sapper__/build",
     "test": "rollup -c rollup.test.config.js && riteway test/bundle-tests.js | tap-nirvana"
