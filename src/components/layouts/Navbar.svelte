@@ -35,14 +35,18 @@
     const target = document.getElementById(id)
     const offset = parseInt(window.getComputedStyle(nav).height) + 10
     scroller({ target, offset, cb: target.focus({ preventScroll: true }) })
-    
   }
 </script>
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
 
 {#if showNav}
-<nav class:noshadow="{expanded}" in:slide="{{delay: 300}}" bind:this="{nav}">
+<nav
+  class:noshadow="{expanded}"
+  in:slide="{{delay: 300}}"
+  bind:this="{nav}"
+  id="nav"
+>
   <div class="wrap">
     <a href="#hero" on:click|preventDefault="{jumpToHash('hero')}">
       <h1 class="skl">OliAncho</h1></a

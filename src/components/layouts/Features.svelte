@@ -3,9 +3,13 @@
   import Btn from '../fragments/Btn.svelte'
 
   export let inview, scroller
-  let viewed = false
+  let section,
+    viewed = false
   $: {
-    if (inview) viewed = true
+    if (inview) {
+      viewed = true
+      setTimeout(() => (section.style.willChange = 'auto'), 600)
+    }
   }
 
   const jumpToContact = () => {
@@ -16,7 +20,7 @@
   }
 </script>
 
-<section id="features" tabindex="-1" class:viewed>
+<section id="features" tabindex="-1" bind:this="{section}" class:viewed>
   <div class="container">
     <Image
       src="pc/2x/leaf2.png"
@@ -137,7 +141,8 @@
     position: relative;
     opacity: 0;
     transform: translate3d(0, 200px, 0);
-    transition: transform 0.7s ease-out, opacity 0.7s ease-in-out;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-in-out;
+    will-change: transform, opacity;
   }
   .viewed {
     opacity: 1;

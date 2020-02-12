@@ -2,57 +2,44 @@
   import Image from 'svelte-i-pack'
   import Before from '../fragments/Before.svelte'
 
-  export let card,
-    viewed = false
+  export let card
 </script>
 
-<div class:anim-container="{card.crown}" class:animate="{card.crown && viewed}">
-  <div class="card">
-    <h2 class="name" class:crown="{card.crown}">
-      {card.name}
-    </h2>
-    {#if card.campaign}
-    <p class="campaign">キャンペーン中！</p>
-    {/if}
-    <h2 class="num">
-      <Before>{card.before}</Before>
-      {card.price}
-    </h2>
-    <p class="desc">{ card.description }</p>
-    <hr />
-    <dl>
-      <dt>内訳</dt>
-      {#each card.breakdown as item}
-      <dd>
-        <span class="b-title">{item.title}</span
-        ><span class="b-price">{item.price}</span>
-      </dd>
-      {/each}
-      <dt></dt>
-    </dl>
-    <Image
-      src="pc/2x/spider.thread.price.png"
-      width="1303*2"
-      alt=""
-      class="price-spider abs d-shadow"
-      no-inline
-    ></Image>
-  </div>
+<div class="card">
+  <h2 class="name" class:crown="{card.crown}">
+    {card.name}
+  </h2>
+  {#if card.campaign}
+  <p class="campaign">キャンペーン中！</p>
+  {/if}
+  <h2 class="num">
+    <Before>{card.before}</Before>
+    {card.price}
+  </h2>
+  <p class="desc">{ card.description }</p>
+  <hr />
+  <dl>
+    <dt>内訳</dt>
+    {#each card.breakdown as item}
+    <dd>
+      <span class="b-title">{item.title}</span
+      ><span class="b-price">{item.price}</span>
+    </dd>
+    {/each}
+    <dt></dt>
+  </dl>
+  <Image
+    src="pc/2x/spider.thread.price.png"
+    width="1303*2"
+    alt=""
+    class="price-spider abs d-shadow"
+    no-inline
+  ></Image>
 </div>
 
 <style>
-  .anim-container {
-    transform: translate3d(3000px, 0, 0);
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.05);
-  }
-  .animate {
-    transform: translate3d(0px, 0, 0);
-  }
-  .anim-container > .card {
-    margin: 8rem 10% 0 auto;
-  }
   .card {
-    margin: 5rem 10% 0 auto;
+    margin: 8rem 10% 0 auto;
     --pd: 2em;
     padding: var(--pd);
     position: relative;
@@ -66,6 +53,9 @@
     cursor: default;
     z-index: 10;
     transition: transform 0.3s ease-in-out;
+  }
+  :global(.card + .card) {
+    margin: 5rem 10% 0 auto;
   }
   .card:after {
     content: '';

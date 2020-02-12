@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte'
+  import list from '../../data/flowList.js'
   import Image from 'svelte-i-pack'
 
   export let inview
@@ -8,80 +10,56 @@
     leaf,
     top = 0,
     opacity = 0,
-    left = 0,
     ry = 0,
     rz = 0,
     deg = 0,
-    leafScroll
+    lastPos = -999
 
-  if (process.browser) {
-    leaf = document.querySelector('.flow-leaf3')
-    let lastPos = -999
-    leafScroll = () => {
-      let scrollPos = window.scrollY - flow.offsetTop + offset
+  const leafScroll = () => {
+    let scrollPos = window.scrollY - flow.offsetTop + offset
 
-      if (lastPos > scrollPos) return
-      deg = scrollPos / 3.6
-      top = Math.max(0, scrollPos / 1.4)
-      let left
-      if (top <= 400) {
-        left = -(top / 1.5)
-      } else if (top > 400 && top <= 900) {
-        left = -267 + (top - 400) / 1.1
-      } else if (top > 900) {
-        left = 188 - (top - 900) / 1.4
+    if (lastPos > scrollPos) {
+      const lists = document.getElementsByClassName('list-container')
+      leaf.style.willChange = 'auto'
+      for (const el of lists) {
+        el.style.willChange = 'auto'
       }
-      ry = Math.max(0, scrollPos / 700)
-      rz = Math.max(0, scrollPos / 500)
-      if (opacity < 1) {
-        opacity = Math.min(1, (top - 100) / 800)
-        leaf.style.opacity = opacity
-      }
-      leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`
-
-      deg < 390 ? (lastPos = scrollPos) : (lastPos = 3000)
+      return
     }
+    deg = scrollPos / 3.6
+    top = Math.max(0, scrollPos / 1.4)
+    let left
+    if (top <= 400) {
+      left = -(top / 1.5)
+    } else if (top > 400 && top <= 900) {
+      left = -267 + (top - 400) / 1.1
+    } else if (top > 900) {
+      left = 188 - (top - 900) / 1.4
+    }
+    ry = Math.max(0, scrollPos / 700)
+    rz = Math.max(0, scrollPos / 500)
+    if (opacity < 1) {
+      opacity = Math.min(1, (top - 100) / 800)
+      leaf.style.opacity = opacity
+    }
+    leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`
+
+    deg < 390 ? (lastPos = scrollPos) : (lastPos = 3000)
   }
   $: {
     if (inview && process.browser) {
       viewed = true
-      if (window.innerWidth > 890) {
-        top < 1000 && window.addEventListener('scroll', leafScroll)
-      } else {
-        leaf.style.opacity = 1
+      if (window.innerWidth > 890 && top < 1000) {
+        window.addEventListener('scroll', leafScroll)
       }
     } else if (!inview && process.browser) {
       window.removeEventListener('scroll', leafScroll)
     }
   }
 
-  const list = [
-    {
-      heading: '無料相談・お見積もり',
-      content:
-        'どんな些細なことでも無料でご相談承ります！\nその後、ヒアリング内容を元にお見積もりをさせていただきます。',
-    },
-    {
-      heading: 'ご契約',
-      content:
-        'ご納得いただけた段階でご契約。\nわかりやすい言葉でしっかり説明しますので、ご安心ください。',
-    },
-    {
-      heading: '作業開始',
-      content:
-        'ここからは夫婦二人三脚の作業です！\n基本的にデザインはGobu、コーディングはDavideが担当いたします。',
-    },
-    {
-      heading: 'ご相談・ご確認',
-      content:
-        '作業開始から納品まで、随時お客様に確認していただきながら作業を\n進めていきます。だからご希望に合ったサイトを作れるんです！',
-    },
-    {
-      heading: '納品',
-      content:
-        '最終確認でご納得いただければ、納品となります。\nその後1ヶ月の無料サポートもありますのでご安心ください。',
-    },
-  ]
+  onMount(() => {
+    leaf = document.querySelector('.flow-leaf3')
+  })
 </script>
 
 <section id="flow" tabindex="-1" bind:this="{flow}">
@@ -106,14 +84,12 @@
       alt=""
       class="flow-leaf2 abs"
     ></Image>
-    <!-- <div> -->
     <Image
       src="pc/2x/leaf3.png"
       width="501*2"
       alt=""
       class="flow-leaf3 abs"
     ></Image>
-    <!-- </div> -->
   </div>
   <!-- /Deco -->
 
@@ -133,7 +109,7 @@
       <div
         class="list-container"
         class:viewed
-        style="transition: all 0.5s ease-out {i * 0.2}s"
+        style="transition: all 0.5s ease-out {(i + 1) * 0.2}s"
       >
         <div class="step-box">
           <span class="step-span step-step">STEP</span>
@@ -183,6 +159,7 @@
     margin-bottom: 2.8rem;
     transform: translate3d(200px, 0, 0);
     opacity: 0;
+    will-change: transform, opacity;
   }
   .viewed {
     transform: translate3d(0, 0, 0);
@@ -263,6 +240,7 @@
     left: 6rem;
     filter: drop-shadow(2px -5px 3px var(--shadow));
     opacity: 0;
+    will-change: opacity, transform;
   }
 
   @media (max-width: 1000px) {
@@ -306,6 +284,8 @@
       top: 36%;
       left: -10%;
       transform: rotate(-155deg);
+      opacity: 1;
+      will-change: auto;
     }
   }
   @media (max-width: 720px) {

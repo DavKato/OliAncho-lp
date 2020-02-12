@@ -11,7 +11,9 @@
   let loaded,
     hero,
     leftBox,
-    wineBox,
+    leafBox,
+    rightTitle,
+    spiderBox,
     pour = false,
     slideLeft = false,
     slideDown = false
@@ -23,12 +25,11 @@
 
   const getRdmNo = num => Math.ceil(Math.random() * num)
 
-  const triggerSlideLeft = () => {
-    leftBox.style.transform = 'translate3d(0,0,0)'
-    slideLeft = true
-  }
-
   const done = () => {
+    leftBox.style.willChange = 'auto'
+    leafBox.style.willChange = 'auto'
+    rightTitle.style.willChange = 'auto'
+    spiderBox.style.willChange = 'auto'
     dispatch('done')
   }
 
@@ -52,17 +53,19 @@
   {#if loaded }
   <div
     class="left-box"
-    in:fly="{{ y: -1000, duration: 400, easing: backEase }}"
+    in:fly="{{ y: -1000, opacity: 1, duration: 400, easing: backEase }}"
     on:introend="{() => pour = true}"
     bind:this="{leftBox}"
+    class:to-place="{slideLeft}"
   >
-    <div class="wine-box" bind:this="{ wineBox }">
-      <Wine {pour} on:poured="{triggerSlideLeft}"></Wine>
+    <div class="wine-box">
+      <Wine {pour} on:poured="{() => slideLeft = true}"></Wine>
       {#if slideDown}
       <div
         class="leaf-box"
-        in:fly="{{y: -1000, duration: 600, easing: backEase}}"
+        in:fly="{{y: -700, opacity: 1, duration: 600, easing: backEase}}"
         on:introend="{done}"
+        bind:this="{leafBox}"
       >
         <Image
           src="pc/2x/leaf3.png"
@@ -82,8 +85,9 @@
     {#if slideLeft}
     <h2
       class="right-title"
-      in:fly="{{x: 1000, duration: 800, easing: backEase}}"
+      in:fly="{{x: 1000, opacity: 1, duration: 800, easing: backEase}}"
       on:introend="{() => slideDown = true}"
+      bind:this="{rightTitle}"
     >
       個人だからこそできる<span class="strong"
         >あなたにぴったりの<br />WEBサイトを！</span
@@ -91,10 +95,11 @@
     </h2>
     {/if}
     <div class="spider-container">
-      {#each spiders as spider} {#if slideDown}
+      {#if slideDown} {#each spiders as spider (spider.text)}
       <div
         class="spider-box skr"
-        in:fly="{{y: -1000, duration: 600, delay: getRdmNo(400), easing: backEase}}"
+        transition:fly="{{y: -900, opacity: 1, duration: 600, delay: getRdmNo(400), easing: backEase}}"
+        bind:this="{spiderBox}"
       >
         <p class="spider-text">{spider.text}</p>
         <Image
@@ -105,7 +110,7 @@
           no-inline
         ></Image>
       </div>
-      {/if} {/each}
+      {/each}{/if}
     </div>
   </div>
   <DownArrow></DownArrow>
@@ -130,6 +135,10 @@
     width: 40%;
     transition: transform 0.9s;
     transform: translate3d(calc(50% + 80px), 0, 0);
+    will-change: transform;
+  }
+  .to-place {
+    transform: translate3d(0, 0, 0);
   }
   .wine-box {
     max-width: 400px;
@@ -145,6 +154,7 @@
     left: 19%;
     transform: rotate(22deg);
     position: absolute;
+    will-change: transform;
   }
   :global(.hero-leaf) {
     width: 160px;
@@ -174,6 +184,7 @@
     padding-left: 5rem;
     position: relative;
     z-index: 10;
+    will-change: transform;
   }
   .strong {
     display: block;
@@ -199,6 +210,7 @@
     text-align: center;
     box-shadow: 4px 4px 7px var(--shadow);
     z-index: 10;
+    will-change: transform;
   }
   .spider-box:nth-child(3) {
     margin-left: 4rem;

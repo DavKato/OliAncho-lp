@@ -9,7 +9,12 @@
   }
 </script>
 
-<section id="qa" tabindex="-1" class:viewed>
+<section
+  id="qa"
+  tabindex="-1"
+  class:viewed
+  on:transitionend="{(e) => e.target.style.willChange = 'auto'}"
+>
   <LabelSeal {viewed}></LabelSeal>
   <LabelSeal {viewed} rotate></LabelSeal>
 
@@ -27,7 +32,6 @@
 
 <style>
   section {
-    /* margin-top: -233px; */
     margin-top: 155px;
     min-height: 1300px;
     height: calc(375px + 1250px - (100vw / 5));
@@ -37,6 +41,7 @@
     transform: rotate(-50deg);
     opacity: 0;
     padding-top: 4rem;
+    will-change: opacity, transform;
   }
   .viewed {
     transform: rotate(-11deg);

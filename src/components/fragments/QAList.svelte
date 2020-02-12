@@ -1,6 +1,5 @@
 <script>
   import { slide, fly } from 'svelte/transition'
-  import { flip } from 'svelte/animate'
   import { quintOut } from 'svelte/easing'
 
   import FoldIcon from '../materials/FoldIcon.svelte'
