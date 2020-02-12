@@ -4,6 +4,7 @@
   import { quintIn } from 'svelte/easing'
   export let pour
 
+  let cover
   const dispatch = createEventDispatcher()
   const y = tweened(60, { duration: 500, easing: quintIn })
 
@@ -11,6 +12,7 @@
     $y = -160
     setTimeout(() => {
       dispatch('poured')
+      cover.style.display = 'none'
     }, 900)
   }
 </script>
@@ -27,7 +29,15 @@
 -79 -708 -121 -232 -72 -1043 -154 -1270 -129 -49 6 -220 24 -380 41 -646 68
 -775 94 -1144 231 -183 68 -206 70 -249 20z"
   />
-  <rect x="5" y="{$y}" width="290" height="220" rx="50" fill="#fff"></rect>
+  <rect
+    x="5"
+    y="{$y}"
+    width="290"
+    height="220"
+    rx="50"
+    fill="#fff"
+    bind:this="{cover}"
+  ></rect>
   <path
     transform="translate(0,509) scale(0.05,-0.05)"
     class="glass"

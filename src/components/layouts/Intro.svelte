@@ -125,7 +125,7 @@
     font-family: var(--times);
     font-size: 1rem;
     transform: translate3d(400px, 0, 0);
-    transition: transform 1.6s 0.6s ease-out;
+    transition: transform 1.4s ease-out;
   }
   .viewed {
     transform: translate3d(0, 0, 0);

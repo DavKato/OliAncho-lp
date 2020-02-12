@@ -2,10 +2,17 @@
   import Image from 'svelte-i-pack'
   import Btn from '../fragments/Btn.svelte'
 
-  export let inview
+  export let inview, scroller
   let viewed = false
   $: {
     if (inview) viewed = true
+  }
+
+  const jumpToContact = () => {
+    const target = document.getElementById('contact')
+    const nav = document.getElementById('nav')
+    const offset = parseInt(window.getComputedStyle(nav).height) + 10
+    scroller({ target, offset, cb: target.focus({ preventScroll: true }) })
   }
 </script>
 
@@ -111,7 +118,7 @@
     わたしたちは<br class="sm-br" />WEBクリエイターとして夫婦で活動しています。
   </p>
   <p>いつでもお気軽にお問い合わせください :)</p>
-  <a href="#contact" class="feat-btn">
+  <a href="#contact" class="feat-btn" on:click|preventDefault="{jumpToContact}">
     <Btn text="ご依頼・ご相談はこちらから">
       <Image
         src="pc/2x/davigobu.small.png"

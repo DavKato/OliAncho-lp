@@ -1,7 +1,8 @@
 <script context="module">
-  let vh
+  let vh, vw
   if (process.browser) {
     vh = window.innerHeight * 0.4
+    vw = window.innerWidth
   }
 </script>
 <script>
@@ -27,40 +28,45 @@
     prevHeight = 0,
     scroller
 
-  const cb = (entries, observer) => {
+  // Intersection Observer config
+  const cbDesk = (entries, observer) => {
     entries.forEach(entry => {
       const id = entry.target.id
       const height = entry.intersectionRect.height
 
       if (height > vh && height > prevHeight) {
-        console.log(prevHeight, id, height)
         inView = id
       }
       prevHeight = height
     })
   }
+  const cbMobile = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id
+        inView = id
+      }
+    })
+  }
   const buildThreshold = steps => {
     let thresholds = []
-
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
       thresholds.push(ratio)
     }
-
-    // thresholds.push(0)
-
+    thresholds.push(0)
     return thresholds
   }
-  const observer = process.browser
-    ? new IntersectionObserver(cb, {
-        // rootMargin: `${vh}px 0px`,
-        threshold: buildThreshold(12),
-      })
-    : null
+  //////////////////////////////////////
 
   onMount(() => {
     scroller = smoothScroller()
+
     const sections = document.querySelectorAll('section')
+    const cb = vw > 890 ? cbDesk : cbMobile
+    const observer = new IntersectionObserver(cb, {
+      threshold: buildThreshold(12),
+    })
     sections.forEach(el => observer.observe(el))
   })
 </script>
@@ -74,7 +80,7 @@
 <main>
   <Hero on:done="{() => showNav = true}"></Hero>
   <Intro inview="{inView === 'intro'}"></Intro>
-  <Features inview="{inView === 'features'}"></Features>
+  <Features inview="{inView === 'features'}" {scroller}></Features>
   <Comparison inview="{inView === 'comparison'}"></Comparison>
   <Flow inview="{inView === 'flow'}"></Flow>
   <Price inview="{inView === 'price'}"></Price>

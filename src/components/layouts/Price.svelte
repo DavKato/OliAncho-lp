@@ -51,7 +51,7 @@
     </div>
 
     {#each cardList as card (card.name)}
-    <PriceCard {card} {viewed}></PriceCard>
+    <PriceCard {card}></PriceCard>
     {/each}
     <div class="tail">
       <p>※ホスティング無料</p>
@@ -64,7 +64,6 @@
   section {
     position: relative;
     margin-top: 15rem;
-    /* padding-bottom: 20rem; */
   }
   .container {
     width: 66%;
