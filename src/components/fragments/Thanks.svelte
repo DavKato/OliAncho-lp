@@ -1,18 +1,18 @@
 <script>
-  import { fly } from 'svelte/transition'
-  import { quintIn, quintOut } from 'svelte/easing'
-  import { createEventDispatcher } from 'svelte'
+  import { fly } from 'svelte/transition';
+  import { quintIn, quintOut } from 'svelte/easing';
+  import { createEventDispatcher } from 'svelte';
 
-  const dispatch = createEventDispatcher()
-  export let text, success
+  const dispatch = createEventDispatcher();
+  export let text, success;
 
   const exit = (e = true) => {
-    e && dispatch('exit')
-  }
+    e && dispatch('exit');
+  };
 
-  let r
-  $: l = -1 * r
-  const divOp = { duration: 500, easing: quintIn }
+  let r;
+  $: l = -1 * r;
+  const divOp = { duration: 500, easing: quintIn };
 </script>
 
 <svelte:window
@@ -20,15 +20,8 @@
   bind:innerWidth="{r}"
 ></svelte:window>
 
-<div
-  in:fly="{{...divOp, x: r}}"
-  out:fly="{{...divOp, x: l}}"
-  on:click="{exit}"
-  on:introstart="{()=> console.log(r, l)}"
-  on:introend="{()=> console.log(r, l)}"
-  on:outrostart="{()=> console.log(r, l)}"
->
-  <p class:success class:fail="{!success}">
+<div in:fly="{{...divOp, x: r}}" out:fly="{{...divOp, x: l}}" on:click="{exit}">
+  <p class:success class:fail="{!success}" data-testid="thanksRunner">
     {text}
   </p>
 </div>

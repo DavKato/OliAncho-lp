@@ -1,10 +1,10 @@
 <script>
-  import { slide } from 'svelte/transition'
-  import { tweened } from 'svelte/motion'
-  import Image from 'svelte-i-pack'
-  import Hamburger from '../materials/Hamburger.svelte'
+  import { slide } from 'svelte/transition';
+  import { tweened } from 'svelte/motion';
+  import Image from 'svelte-i-pack';
+  import Hamburger from '../materials/Hamburger.svelte';
 
-  export let inView, showNav, scroller
+  export let inView, showNav, scroller;
 
   const list = [
     {
@@ -27,15 +27,15 @@
       id: 'qa',
       name: 'よくある質問',
     },
-  ]
+  ];
   let nav,
-    expanded = false
+    expanded = false;
 
   const jumpToHash = id => () => {
-    const target = document.getElementById(id)
-    const offset = parseInt(window.getComputedStyle(nav).height) + 10
-    scroller({ target, offset, cb: target.focus({ preventScroll: true }) })
-  }
+    const target = document.getElementById(id);
+    const offset = parseInt(window.getComputedStyle(nav).height) + 10;
+    scroller({ target, offset, cb: target.focus({ preventScroll: true }) });
+  };
 </script>
 
 <svelte:body on:click="{() => expanded = false}"></svelte:body>
@@ -52,7 +52,10 @@
       <h1 class="skl">OliAncho</h1></a
     >
     <div class="sp-menu">
-      <a href="#contact" on:click|preventDefault="{jumpToHash('contact')}"
+      <a
+        href="#contact"
+        data-testid="navContactS"
+        on:click|preventDefault="{jumpToHash('contact')}"
         ><Image
           src="sp/3x/mail.png"
           width="60*3"
@@ -123,6 +126,7 @@
   <a
     href="#contact"
     class="contact-link skl"
+    data-testid="navContactL"
     on:click|preventDefault="{jumpToHash('contact')}"
   >
     <Image
