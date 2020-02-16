@@ -12,11 +12,10 @@
     "build": "NODE_ENV=production sapper build --legacy",
     "export": "NODE_ENV=production sapper export --legacy",
     "ex:firebase": "NODE_ENV=production sapper export --legacy && rm -rf firebase/public && cp -r __sapper__/export firebase/public",
-    "tc:dev": "testcafe",
     "start": "node __sapper__/build",
     "test:ui": "tape test/ui/**/*.test.js | tap-nirvana",
     "test:ui:debug": "DEBUG=true tape test/ui/**/*.test.js debug | tap-nirvana",
-    "test:unit": "rollup -c rollup.ui.test.config.js && node test/ui-tests.js | tap-nirvana"
+    "test:unit": "rollup -c rollup.test.config.js && node test/unit/bundle-test.js | tap-nirvana"
   },
   "dependencies": {
     "compression": "^1.7.4",
