@@ -1,6 +1,5 @@
 <script>
   import { slide } from 'svelte/transition';
-  import { tweened } from 'svelte/motion';
   import Image from 'svelte-i-pack';
   import Hamburger from '../materials/Hamburger.svelte';
 
