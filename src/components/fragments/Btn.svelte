@@ -1,6 +1,6 @@
 <script>
-  import Image from 'svelte-i-pack'
-  export let text
+  import Image from 'svelte-i-pack';
+  export let text;
 </script>
 <div>
   <button class="back" tabindex="-1" aria-hidden="true">

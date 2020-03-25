@@ -1,11 +1,11 @@
 <script>
-  import { onMount } from 'svelte'
-  import list from '../../data/flowList.js'
-  import Image from 'svelte-i-pack'
+  import { onMount } from 'svelte';
+  import list from '../../data/flowList.js';
+  import Image from 'svelte-i-pack';
 
-  export let inview
-  let viewed = false
-  const offset = 700
+  export let inview;
+  let viewed = false;
+  const offset = 700;
   let flow,
     leaf,
     top = 0,
@@ -13,53 +13,53 @@
     ry = 0,
     rz = 0,
     deg = 0,
-    lastPos = -999
+    lastPos = -999;
 
   const leafScroll = () => {
-    let scrollPos = window.scrollY - flow.offsetTop + offset
+    let scrollPos = window.scrollY - flow.offsetTop + offset;
 
     if (lastPos > scrollPos) {
-      const lists = document.getElementsByClassName('list-container')
-      leaf.style.willChange = 'auto'
+      const lists = document.getElementsByClassName('list-container');
+      leaf.style.willChange = 'auto';
       for (const el of lists) {
-        el.style.willChange = 'auto'
+        el.style.willChange = 'auto';
       }
-      return
+      return;
     }
-    deg = scrollPos / 3.6
-    top = Math.max(0, scrollPos / 1.4)
-    let left
+    deg = scrollPos / 3.6;
+    top = Math.max(0, scrollPos / 1.4);
+    let left;
     if (top <= 400) {
-      left = -(top / 1.5)
+      left = -(top / 1.5);
     } else if (top > 400 && top <= 900) {
-      left = -267 + (top - 400) / 1.1
+      left = -267 + (top - 400) / 1.1;
     } else if (top > 900) {
-      left = 188 - (top - 900) / 1.4
+      left = 188 - (top - 900) / 1.4;
     }
-    ry = Math.max(0, scrollPos / 700)
-    rz = Math.max(0, scrollPos / 500)
+    ry = Math.max(0, scrollPos / 700);
+    rz = Math.max(0, scrollPos / 500);
     if (opacity < 1) {
-      opacity = Math.min(1, (top - 100) / 800)
-      leaf.style.opacity = opacity
+      opacity = Math.min(1, (top - 100) / 800);
+      leaf.style.opacity = opacity;
     }
-    leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`
+    leaf.style.transform = `translate(${left}px, ${top}px) rotate3d(0, ${ry}, ${rz}, ${deg}deg)`;
 
-    deg < 390 ? (lastPos = scrollPos) : (lastPos = 3000)
-  }
+    deg < 390 ? (lastPos = scrollPos) : (lastPos = 3000);
+  };
   $: {
     if (inview && process.browser) {
-      viewed = true
+      viewed = true;
       if (window.innerWidth > 890 && top < 1000) {
-        window.addEventListener('scroll', leafScroll)
+        window.addEventListener('scroll', leafScroll);
       }
     } else if (!inview && process.browser) {
-      window.removeEventListener('scroll', leafScroll)
+      window.removeEventListener('scroll', leafScroll);
     }
   }
 
   onMount(() => {
-    leaf = document.querySelector('.flow-leaf3')
-  })
+    leaf = document.querySelector('.flow-leaf3');
+  });
 </script>
 
 <section id="flow" tabindex="-1" bind:this="{flow}">
