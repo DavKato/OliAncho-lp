@@ -1,5 +1,5 @@
 <script>
-  import Image from 'svelte-i-pack'
+  import Image from 'svelte-i-pack';
 </script>
 <footer>
   <div>
@@ -16,7 +16,16 @@
       ></Image>
     </a>
 
-    <a
+    <a href="https://oliancho.com" target="_blank" rel="noreferrer noopener">
+      <Image
+        src="pc/2x/portfolio.png"
+        width="50*2"
+        alt="OliAnchoのポートフォリオへ"
+        class="bottoms-link d-shadow skl"
+      ></Image>
+    </a>
+
+    <!-- <a
       href="https://www.youtube.com/channel/UCzTW_KyoA5BrI53ikFUdMGA"
       target="_blank"
       rel="noreferrer noopener"
@@ -27,9 +36,9 @@
         alt="Youtubeチャンネルへ"
         class="bottoms-link d-shadow skl"
       ></Image>
-    </a>
+    </a> -->
 
-    <a
+    <!-- <a
       href="https://twitter.com/DOKs62"
       target="_blank"
       rel="noreferrer noopener"
@@ -40,7 +49,7 @@
         alt="Twitterへ"
         class="bottoms-link skl"
       ></Image>
-    </a>
+    </a> -->
   </div>
 
   <div class="davigobu-box">

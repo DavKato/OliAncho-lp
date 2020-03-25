@@ -89,12 +89,25 @@
         >
           <Image
             src="sp/3x/instagram.menu.png"
-            class="nav-sp-link d-shadow"
+            class="nav-sp-link d-shadow skl"
             alt="Instagramへ"
           ></Image>
         </a>
       </li>
-      <li>
+      <li class="li-sp">
+        <a
+          href="https://oliancho.com"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image
+            src="sp/3x/portfolio.menu.png"
+            class="nav-sp-link d-shadow skl"
+            alt="ポートフォリオへ"
+          ></Image>
+        </a>
+      </li>
+      <!-- <li>
         <a
           href="https://www.youtube.com/channel/UCzTW_KyoA5BrI53ikFUdMGA"
           target="_blank"
@@ -119,7 +132,7 @@
             alt="Twitterへ"
           ></Image>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
   <a
